@@ -1,13 +1,513 @@
-<!DOCTYPE HTML><html lang="es"><head>
+<!DOCTYPE HTML><?php
+    session_start();
+    class BaseDatos
+    {
+
+        protected $msgAviso;
+
+        public function __construct() 
+        {
+            $this->server = "localhost";
+            $this->user = "DBUSER2023";
+            $this->pass = "DBPSWD2023";
+            $this->crearDB(); // creamos la base de datos
+            $this->crearTablas(); // creamos las tablas de la base de datos
+            //$this->cargarDatos();
+            
+        }
+
+        // conectar base de datos
+        public function conectarBaseDatos() 
+        {
+            $this->db = new mysqli($this->server, $this->user, $this->pass);
+            if ($this->db->connect_errno)
+                $this->mensajeConexion = "ERROR: No se ha podido conectar a la base de datos.";
+
+            //$this->db->select_db("libreria");
+        }
+
+        // desconectar base de datos
+        public function desconectarBaseDatos() 
+        {
+            $this->db->close();
+        }
+
+        /** 
+         * Se encarga de crear la base de datos 'libreria'
+        */
+        public function crearDB()
+        { 
+            // 1. Conectar con la base de datos
+            $this->conectarBaseDatos();
+
+            
+            //en caso de que yaexista, eliminamos la  base de datos
+            $dropQuery = "DROP DATABASE IF EXISTS libreria";
+            $this->db->query($dropQuery);
+
+            //2. Creamos la base de datos
+            $createQuery = "CREATE DATABASE IF NOT EXISTS libreria";
+            $respuesta = $this->db->query($createQuery);
+            if ($respuesta == false) {
+                $this->desconectarBaseDatos();
+                return false;
+            }
+
+
+            // 3. Seleccionamos la base de datos
+            $this->db->select_db("libreria");
+        }
+
+        public function crearTablas() 
+        {
+
+            // por si acaso, antes de crearlas las borramos por si ya existen
+            $dropTables = [
+                "DROP TABLE IF EXISTS Libro;",
+                "DROP TABLE IF EXISTS Cliente;",
+                "DROP TABLE IF EXISTS Pedido;",
+                "DROP TABLE IF EXISTS Autor;",
+                "DROP TABLE IF EXISTS Categoria;"
+            ];
+            foreach ($dropTables as $table)
+                $this->db->query($table);
+
+            // creamos las tablas (mismo codigo que en el .sql)
+            $tables = 
+                //tabla cliente
+                ["CREATE TABLE IF NOT EXISTS Cliente (
+                    CODCLIENTE DECIMAL(4,0) PRIMARY KEY,
+                    NOMBRE VARCHAR(50) NOT NULL,
+                    EMAIL VARCHAR(100),
+                    TELEFONO VARCHAR(20)
+                );",
+
+                //tabla pedido
+                "CREATE TABLE IF NOT EXISTS Pedido (
+                    CODPEDIDO DECIMAL(4,0) PRIMARY KEY,
+                    CODCLIENTE DECIMAL(4,0),
+                    FECHA DATE,
+                    FOREIGN KEY (CODCLIENTE) REFERENCES Cliente(CODCLIENTE)
+                );",
+
+                //tabla autor
+                "CREATE TABLE IF NOT EXISTS Autor (
+                    CODAUTOR DECIMAL(4,0) PRIMARY KEY,
+                    NOMBRE VARCHAR(50) NOT NULL,
+                    APELLIDOS VARCHAR(50)
+                );",
+
+                //tabla categoria
+                "CREATE TABLE IF NOT EXISTS Categoria (
+                    CODCATEGORIA DECIMAL(4,0) PRIMARY KEY,
+                    NOMBRE VARCHAR(50) NOT NULL,
+                    DESCRIPCION VARCHAR(100)
+                );", 
+                
+                //tabla libro - al final porque necesita a las tablas autor y categoria
+                "CREATE TABLE IF NOT EXISTS Libro (
+                    CODLIBRO DECIMAL(4,0) PRIMARY KEY,
+                    TITULO VARCHAR(100) NOT NULL,
+                    CODAUTOR DECIMAL(4,0),
+                    CODCATEGORIA DECIMAL(4,0),
+                    PRECIO DECIMAL(10, 2),
+                    FOREIGN KEY (CODAUTOR) REFERENCES Autor(CODAUTOR),
+                    FOREIGN KEY (CODCATEGORIA) REFERENCES Categoria(CODCATEGORIA)
+                );",
+
+            ]; 
+
+            foreach ($tables as $table)
+                $this->db->query($table);
+
+            //cerramos la conexion
+            $this->desconectarBaseDatos();
+        }
+
+
+
+        // CARGA DE DATOS DE CSV
+
+        public function cargarLibros($nombreArchivo)
+        {
+            $this->conectarBaseDatos();
+            $this->db->select_db("libreria");
+
+            //$nombreArchivo = 'datosLibros.csv'; 
+
+            $fichero = fopen($nombreArchivo, "r");
+            while (($datos = fgetcsv($fichero)) !== false) {
+                $insertQuery = "INSERT INTO libro (CODLIBRO, TITULO, CODAUTOR, CODCATEGORIA, PRECIO) VALUES (?, ?, ?, ?, ?)";
+                $pst = $this->db->prepare($insertQuery);
+
+                // parametros (porque no pueden ser pasados por referencia)
+                $codlibro = intval($datos[0]);
+                $titulo = $datos[1];
+                $codautor = intval($datos[2]);
+                $codcategoria = intval($datos[3]);
+                $precio = intval($datos[4]);
+                
+                
+                $pst->bind_param("isiii", $codlibro, $titulo, $codautor, $codcategoria, $precio);
+                $resultado = $pst->execute();
+
+                if ($resultado) {
+                    $this->msgAviso = "Se han cargado los libros con éxito";
+                } else {
+                    $this->msgAviso = "ERROR: No se ha podido cargar el archivo CSV de libros.";
+                }
+            }
+            fclose($fichero);
+        }
+
+        public function cargarPedidos($nombreArchivo)
+        {
+            $this->conectarBaseDatos();
+            $this->db->select_db("libreria");
+            //$nombreArchivo = 'datosPedidos.csv'; 
+
+            $fichero = fopen($nombreArchivo, "r");
+            while (($datos = fgetcsv($fichero)) !== false) {
+                $insercion = "INSERT INTO Pedido (CODPEDIDO, CODCLIENTE, FECHA) VALUES (?, ?, ?)";
+                $pst = $this->db->prepare($insercion);
+                
+                // parametros (porque no pueden ser pasados por referencia)
+                $codpedido = intval($datos[0]);
+                $codcliente = intval($datos[1]);
+                $fecha = $datos[2];
+
+                $pst->bind_param("iis", $codpedido, $codcliente, $fecha);
+                $resultado = $pst->execute();
+
+                if ($resultado) {
+                    $this->msgAviso = "Se han cargado los pedidos con éxito";
+                } else {
+                    $this->msgAviso = "ERROR: No se ha podido cargar el archivo CSV de pedidos.";
+                }
+            }
+            fclose($fichero);
+        }
+
+        public function cargarClientes($nombreArchivo)
+        {
+            $this->conectarBaseDatos();
+            $this->db->select_db("libreria");
+            //$nombreArchivo = 'datosClientes.csv'; 
+
+            $fichero = fopen($nombreArchivo, "r");
+            while (($datos = fgetcsv($fichero)) !== false) {
+                $insertQuery = "INSERT INTO Cliente (CODCLIENTE, NOMBRE, EMAIL, TELEFONO) VALUES (?, ?, ?, ?)";
+                $pst = $this->db->prepare($insertQuery);
+
+                // parametros (porque no pueden ser pasados por referencia)
+                $codcliente = intval($datos[0]);
+                $nombre = $datos[1];
+                $email = $datos[2];
+                $telefono = $datos[3];
+
+
+                $pst->bind_param("isss", $codcliente, $nombre, $email, $telefono);
+                $resultado = $pst->execute();
+
+                if ($resultado) {
+                    $this->msgAviso = "Se han cargado los clientes con éxito";
+                } else {
+                    $this->msgAviso = "ERROR: No se ha podido cargar el archivo CSV de clientes.";
+                }
+            }
+            fclose($fichero);
+        }
+
+        public function cargarAutores($nombreArchivo)
+        {
+            $this->conectarBaseDatos();
+            $this->db->select_db("libreria");
+            //$nombreArchivo = 'datosAutores.csv'; 
+
+            $fichero = fopen($nombreArchivo, "r");
+            while (($datos = fgetcsv($fichero)) !== false) {
+                $insertQuery = "INSERT INTO Autor (CODAUTOR, NOMBRE, APELLIDOS) VALUES (?, ?, ?)";
+                $pst = $this->db->prepare($insertQuery);
+
+                // parametros (porque no pueden ser pasados por referencia)
+                $codautor = intval($datos[0]);
+                $nombre = $datos[1];
+                $apellidos = $datos[2];
+
+                $pst->bind_param( "iss", $codautor, $nombre, $apellidos);
+                $resultado = $pst->execute();
+
+                if ($resultado) {
+                    $this->msgAviso = "Se han cargado los autores con éxito";
+                } else {
+                    $this->msgAviso = "ERROR: No se ha podido cargar el archivo CSV de autores.";
+                }
+            }
+            fclose($fichero);
+        }
+
+        public function cargarCategorias($nombreArchivo)
+        {
+            $this->conectarBaseDatos();
+            $this->db->select_db("libreria");
+            //$nombreArchivo = 'datosCategorias.csv'; 
+
+            $fichero = fopen($nombreArchivo, "r");
+            while (($datos = fgetcsv($fichero)) !== false) {
+                $insertQuery = "INSERT INTO Categoria (CODCATEGORIA, NOMBRE, DESCRIPCION) VALUES (?, ?, ?)";
+                $pst = $this->db->prepare($insertQuery);
+                // parametros (porque no pueden ser pasados por referencia)
+                $codcategoria = intval($datos[0]);
+                $nombre = $datos[1];
+                $descripcion = $datos[2];
+
+                $pst->bind_param("iss", $codcategoria, $nombre, $descripcion);
+                $resultado = $pst->execute();
+                if ($resultado) {
+                    $this->msgAviso = "Se han cargado las categorías con éxito";
+                } else {
+                    $this->msgAviso = "ERROR: No se ha podido cargar el archivo CSV de categorías.";
+                }
+            }
+            fclose($fichero);
+        }
+
+
+
+        // EXPORTAR A CSV
+
+        public function exportarCSV() {
+
+            $this->conectarBaseDatos();
+            $this->db->select_db("libreria");
+
+            $selectLibros = $this->db->query("SELECT * FROM LIBRO");
+            $this->exportar($selectLibros, "librosExportados.csv");
+            
+            $selectPedidos = $this->db->query("SELECT * FROM PEDIDO");
+            $this->exportar($selectPedidos, "pedidosExportados.csv");
+
+            $selectClientes = $this->db->query("SELECT * FROM CLIENTE");
+            $this->exportar($selectClientes, "clientesExportados.csv");
+
+            $selectAutores = $this->db->query("SELECT * FROM AUTOR");
+            $this->exportar($selectAutores, "autoresExportados.csv");
+
+            $selectCategorias = $this->db->query("SELECT * FROM CATEGORIA");
+            $this->exportar($selectCategorias, "categoriasExportadas.csv");
+        }
+
+        public function exportar($selectResult, $nombreArchivo) {
+            if ($selectResult->fetch_assoc() != null) {
+                $archivo = fopen($nombreArchivo, "w");
+
+                foreach ($selectResult as $fila) {
+                    fputcsv($archivo, $fila); // fputcsv formatea una fila como línea CSV y la escribe en un archivo abierto
+                }
+
+                fclose($archivo);
+            }
+        }
+
+
+        // CONSULTAR DATOS
+        public function consultarDatos($tabla)
+        {
+            $this->conectarBaseDatos();
+            $this->db->select_db("libreria");
+
+            $query = "SELECT * FROM $tabla"; // consulta tabla a la base de datos
+
+            $resultado = $this->db->query($query);
+            $data = '';
+
+            if ($resultado) {
+                $data .= "<section>";
+                $data .= "<h3>Datos de la tabla $tabla:</h3>";
+
+                // Lista para mostrar los datos
+                $data .= "<ul>";
+
+                // filas con los datos de la tabla
+                while ($fila = $resultado->fetch_assoc()) {
+                    $data .= "<li>";
+                    $data .= "<ul>";
+
+                    foreach ($fila as $columna => $valor) {
+                        $data .= "<li><strong>$columna:</strong> $valor</li>";
+                    }
+
+                    $data .= "</ul>";
+                    $data .= "</li>";
+                }
+
+                $data .= "</ul>";
+                $data .= "</section>";
+            } else {
+                $data .= "No se pudo ejecutar la consulta.";
+            }
+
+            return $data;
+        }
+
+
+
+        // CONSULTAR LOS LIBROS PRESTADOS DE UN CLIENTE
+
+        public function consultarLibrosPrestados($codCliente)
+        {
+            $this->conectarBaseDatos();
+            $this->db->select_db("libreria");
+
+            $query = "SELECT c.CODCLIENTE, c.NOMBRE, l.TITULO AS 'LIBRO PRESTADO'
+                    FROM Cliente c
+                    JOIN Pedido p ON c.CODCLIENTE = p.CODCLIENTE
+                    JOIN Libro l ON p.CODPEDIDO = l.CODLIBRO
+                    WHERE c.CODCLIENTE = $codCliente";
+
+            $resultado = $this->db->query($query);
+
+            if ($resultado) {
+                echo "<section>";
+                echo "<h3>Libros prestados al cliente:</h3>";
+
+                if ($resultado->num_rows > 0) {
+                    echo "<ul>";
+                    
+                    while ($fila = $resultado->fetch_assoc()) {
+                        echo "<li>";
+                        echo "<strong>CODCLIENTE:</strong> " . $fila['CODCLIENTE'] . "<br>";
+                        echo "<strong>NOMBRE DEL CLIENTE:</strong> " . $fila['NOMBRE'] . "<br>";
+                        echo "<strong>LIBRO PRESTADO:</strong> " . $fila['LIBRO PRESTADO'];
+                        echo "</li>";
+                    }
+
+                    echo "</ul>";
+                } else {
+                    echo "<p>El cliente no tiene libros prestados.</p>";
+                }
+
+                echo "</section>";
+            } else {
+                echo "Error al consultar los libros prestados del cliente.";
+            }
+
+        }
+
+
+
+        // CONSULTAR LIBROS POR AUTOR
+
+        public function consultarLibrosPorAutor($codAutor)
+        {
+            $this->conectarBaseDatos();
+            $this->db->select_db("libreria");
+
+            $query = "SELECT a.NOMBRE AS 'NOMBRE AUTOR', l.TITULO AS 'TITULO LIBRO'
+                    FROM Autor a 
+                    JOIN Libro l ON a.CODAUTOR = l.CODAUTOR 
+                    JOIN Categoria c ON l.CODCATEGORIA = c.CODCATEGORIA 
+                    WHERE a.CODAUTOR = $codAutor";
+
+            $resultado = $this->db->query($query);
+
+            if ($resultado) {
+                if ($resultado->num_rows > 0) {
+                    echo "<h3>Libros del autor:</h3>";
+                    echo "<ul>";
+
+                    while ($fila = $resultado->fetch_assoc()) {
+                        echo "<li>";
+                        echo "<strong>NOMBRE AUTOR:</strong> " . $fila['NOMBRE AUTOR'] . "<br>";
+                        echo "<strong>TITULO LIBRO:</strong> " . $fila['TITULO LIBRO'];
+                        echo "</li>";
+                    }
+
+                    echo "</ul>";
+                } else {
+                    echo "<p>El autor no tiene libros asociados.</p>";
+                }
+            } else {
+                echo "Error al consultar los libros del autor.";
+            }
+        }
+
+
+
+
+
+
+
+
+}
+
+
+
+//$_SESSION["db"] = $db;
+if(isset($_SESSION['db']))
+{
+    $db = $_SESSION['db'];
+}
+else
+    $db = new BaseDatos();
+
+if (count($_POST) > 0) 
+{
+  
+
+    $db->conectarBaseDatos();
+
+    
+    // cargar datos
+
+    if (isset($_FILES["libros_csv"]) && isset($_POST["cargarLibros"])) {
+        $archivoLibros = $_FILES["libros_csv"]["name"];
+        $db->cargarLibros($archivoLibros);
+    }
+
+    if (isset($_FILES["clientes_csv"]) && isset($_POST["cargarClientes"])) {
+        $archivoClientes = $_FILES["clientes_csv"]["name"];
+        $db->cargarClientes($archivoClientes);
+    }
+
+    if (isset($_FILES["pedidos_csv"]) && isset($_POST["cargarPedidos"])) {
+        $archivoPedidos = $_FILES["pedidos_csv"]["name"];
+        $db->cargarPedidos($archivoPedidos);
+    }
+
+    if (isset($_FILES["autores_csv"]) && isset($_POST["cargarAutores"])) {
+        $archivoAutores = $_FILES["autores_csv"]["name"];
+        $db->cargarAutores($archivoAutores);
+    }
+
+    if (isset($_FILES["categorias_csv"]) && isset($_POST["cargarCategorias"])) {
+        $archivoCategoria = $_FILES["categorias_csv"]["name"];
+        $db->cargarCategorias($archivoCategoria);
+    }
+    
+    // exportar datos    
+    if (isset($_POST['exportarDatos'])) $db->exportarCSV();
+
+    $db->desconectarBaseDatos();
+    $_SESSION["db"] = $db;
+}
+
+
+?>
+
+<!DOCTYPE HTML>
+
+<html lang="es">
+<head>
     <!-- Datos que describen el documento -->
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Libreria</title>
-	<meta name="author" content="Rita Fernandez-Catuxo Ortiz">
+	<meta name ="author" content ="Rita Fernandez-Catuxo Ortiz" />
 	<!-- Descripción del contenido -->
-	<meta name="description" content="Página que simula una libreria, puedes importar, consultar y exportar datos">
-    <meta name="keywords" content="libreria, libros, autor, pedido, cliente, categoria">
+	<meta name ="description" content ="Página que simula una libreria, puedes importar, consultar y exportar datos" />
+    <meta name ="keywords" content ="libreria, libros, autor, pedido, cliente, categoria" />
     <!-- Definir la ventana gráfica -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name ="viewport" content ="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="estilo/estilo.css">
     <link rel="stylesheet" href="estilo/layout.css">
 	<link rel="stylesheet" href="estilo/juegos.css">
@@ -21,13 +521,13 @@
         <h1>Escritorio Virtual</h1>
 
             <nav>
-                <a accesskey="I" tabindex="1" href="index.html">Inicio</a>
-                <a accesskey="S" tabindex="2" href="sobremi.html">Sobre mí</a>
-                <a accesskey="N" tabindex="3" href="noticias.html">Noticias</a>
-                <a accesskey="A" tabindex="4" href="agenda.html">Agenda</a>
-                <a accesskey="M" tabindex="5" href="meteorologia.html">Meteorología</a>
-                <a accesskey="V" tabindex="6" href="viajes.php">Viajes</a>
-                <a accesskey="J" tabindex="7" href="juegos.html">Juegos</a>
+                <a accesskey="I" tabindex=1 href="index.html">Inicio</a>
+                <a accesskey="S" tabindex=2 href="sobremi.html">Sobre mí</a>
+                <a accesskey="N" tabindex=3 href="noticias.html">Noticias</a>
+                <a accesskey="A" tabindex=4 href="agenda.html">Agenda</a>
+                <a accesskey="M" tabindex=5 href="meteorologia.html">Meteorología</a>
+                <a accesskey="V" tabindex=6 href="viajes.php">Viajes</a>
+                <a accesskey="J" tabindex=7 href="juegos.html">Juegos</a>
             </nav>
 
     </header>
@@ -36,56 +536,56 @@
     <!-- todos los juegos -->
     <section data-element="juegos">
         <h2> Juegos disponibles: </h2>
-        <a accesskey="M" tabindex="1" href="memoria.html">Memoria</a>
-        <a accesskey="S" tabindex="2" href="sudoku.html">Sudoku</a>
-        <a accesskey="C" tabindex="3" href="crucigrama.php">Crucigrama</a>
-        <a accesskey="R" tabindex="4" href="api.html">Futbol</a>
-        <a accesskey="L" tabindex="5" href="libreria.php">Libreria</a>
+        <a accesskey="M" tabindex=1 href="memoria.html">Memoria</a>
+        <a accesskey="S" tabindex=2 href="sudoku.html">Sudoku</a>
+        <a accesskey="C" tabindex=3 href="crucigrama.php">Crucigrama</a>
+        <a accesskey="R" tabindex=4 href="api.html">Futbol</a>
+        <a accesskey="L" tabindex=5 href="libreria.php">Libreria</a>
     </section>
 	
 	<main>
 
         <!-- sección para cargar los datos desde los archivos csv-->
-        <section data-element="cargarDatos">
+        <section data-element='cargarDatos'>
             <h2>Cargar archivos CSV con los datos (en este orden)</h2>
 
             <article>
                 <h3><strong>Autores</strong></h3>
                 <form action="#" method="POST" enctype="multipart/form-data">
-                    <label>Cargar el archivo CSV de autores: <input type="file" name="autores_csv"></label>
-                    <input type="submit" value="Cargar archivo" name="cargarAutores">
+                    <label>Cargar el archivo CSV de autores: <input type="file" name="autores_csv" /></label>
+                    <input type="submit" value="Cargar archivo" name="cargarAutores" />
                 </form>
             </article>
 
             <article>
                 <h3><strong>Categorias</strong></h3>
                 <form action="#" method="POST" enctype="multipart/form-data">
-                    <label>Cargar el archivo CSV de categorias: <input type="file" name="categorias_csv"></label>
-                    <input type="submit" value="Cargar archivo" name="cargarCategorias">
+                    <label>Cargar el archivo CSV de categorias: <input type="file" name="categorias_csv" /></label>
+                    <input type="submit" value="Cargar archivo" name="cargarCategorias" />
                 </form>
             </article>
 
             <article>
                 <h3><strong>Clientes</strong></h3>
                 <form action="#" method="POST" enctype="multipart/form-data">
-                    <label>Cargar el archivo CSV de clientes: <input type="file" name="clientes_csv"></label>
-                    <input type="submit" value="Cargar archivo" name="cargarClientes">
+                    <label>Cargar el archivo CSV de clientes: <input type="file" name="clientes_csv" /></label>
+                    <input type="submit" value="Cargar archivo" name="cargarClientes" />
                 </form>
             </article>
 
             <article>
                 <h3><strong>Libros</strong></h3>
-                <form action="#" method="POST" enctype="multipart/form-data">
-                    <label>Cargar el archivo CSV de libros: <input type="file" name="libros_csv"></label>
-                    <input type="submit" value="Cargar archivo" name="cargarLibros">
+                <form action="#" method="POST"enctype="multipart/form-data">
+                    <label>Cargar el archivo CSV de libros: <input type="file" name="libros_csv" /></label>
+                    <input type="submit" value="Cargar archivo" name="cargarLibros" />
                 </form>
             </article>
 
             <article>
                 <h3><strong>Pedidos</strong></h3>
                 <form action="#" method="POST" enctype="multipart/form-data">
-                    <label>Cargar el archivo CSV de pedidos: <input type="file" name="pedidos_csv"></label>
-                    <input type="submit" value="Cargar archivo" name="cargarPedidos">
+                    <label>Cargar el archivo CSV de pedidos: <input type="file" name="pedidos_csv" /></label>
+                    <input type="submit" value="Cargar archivo" name="cargarPedidos" />
                 </form>
             </article>
 
@@ -93,54 +593,73 @@
         </section>
 
         <!-- sección para consultar datos -->
-        <section data-element="consultarDatos">
+        <section data-element='consultarDatos'>
             <h2>Seleccionar tabla para consultar datos</h2>
             <form action="#" method="POST">
                 <label for="tabla">Selecciona una tabla:</label>
-                <select name="tabla">
+                <select id='tabla' name="tabla">
                     <option value="Libro">Libro</option>
                     <option value="Cliente">Cliente</option>
                     <option value="Pedido">Pedido</option>
                     <option value="Autor">Autor</option>
                     <option value="Categoria">Categoria</option>
                 </select>
-                <input type="submit" value="Consultar tabla seleccionada" name="consultarTabla">
+                <input type="submit" value="Consultar tabla seleccionada" name="consultarTabla" />
             </form>
 
 
             <!-- Mostrar los datos consultados aquí -->
-            <section><h3>Datos de la tabla Libro:</h3><ul><li><ul><li><strong>CODLIBRO:</strong> 1</li><li><strong>TITULO:</strong> El Señor de los Anillos</li><li><strong>CODAUTOR:</strong> 1</li><li><strong>CODCATEGORIA:</strong> 1</li><li><strong>PRECIO:</strong> 25.00</li></ul></li><li><ul><li><strong>CODLIBRO:</strong> 2</li><li><strong>TITULO:</strong> Cien años de soledad</li><li><strong>CODAUTOR:</strong> 2</li><li><strong>CODCATEGORIA:</strong> 2</li><li><strong>PRECIO:</strong> 19.00</li></ul></li><li><ul><li><strong>CODLIBRO:</strong> 3</li><li><strong>TITULO:</strong> 1984</li><li><strong>CODAUTOR:</strong> 3</li><li><strong>CODCATEGORIA:</strong> 3</li><li><strong>PRECIO:</strong> 12.00</li></ul></li><li><ul><li><strong>CODLIBRO:</strong> 4</li><li><strong>TITULO:</strong> Orgullo y prejuicio</li><li><strong>CODAUTOR:</strong> 4</li><li><strong>CODCATEGORIA:</strong> 2</li><li><strong>PRECIO:</strong> 16.00</li></ul></li><li><ul><li><strong>CODLIBRO:</strong> 5</li><li><strong>TITULO:</strong> Harry Potter y la Piedra Filosofal</li><li><strong>CODAUTOR:</strong> 5</li><li><strong>CODCATEGORIA:</strong> 4</li><li><strong>PRECIO:</strong> 22.00</li></ul></li></ul></section>        </section>
+            <?php
+            if (isset($_POST['consultarTabla'])) {
+                $tablaSeleccionada = $_POST['tabla'];
+                $datosConsultados = $db->consultarDatos($tablaSeleccionada);
+                echo $datosConsultados; // Mostrar los datos consultados aquí
+            }
+            ?>
+        </section>
 
         <!-- sección para consultar libros prestados -->
-        <section data-element="consultarLibrosPrestados">
+        <section data-element='consultarLibrosPrestados'>
             <h2>Consultar libros prestados por cliente</h2>
             <form action="#" method="POST">
                 <label for="codCliente">Código del cliente:</label>
-                <input type="text" name="codCliente" id="codCliente">
-                <input type="submit" value="Consultar libros prestados" name="consultarLibrosPrestados">
+                <input type="text" name="codCliente" id="codCliente" />
+                <input type="submit" value="Consultar libros prestados" name="consultarLibrosPrestados" />
             </form>
 
             <!-- Mostrar los libros prestados aquí -->
-                    </section>
+            <?php
+            if (isset($_POST['consultarLibrosPrestados'])) {
+                $codigoCliente = $_POST['codCliente'];
+                $db->consultarLibrosPrestados($codigoCliente);
+            }
+            ?>
+        </section>
 
 
         <!-- sección para consultar libros por autor -->
-        <section data-element="consultarLibrosPorAutor">
+        <section data-element='consultarLibrosPorAutor'>
             <h2>Consultar libros por autor</h2>
             <form action="#" method="POST">
                 <label for="codAutor">Código del autor:</label>
-                <input type="text" name="codAutor" id="codAutor">
-                <input type="submit" value="Consultar libros del autor" name="consultarLibrosPorAutor">
+                <input type="text" name="codAutor" id="codAutor" />
+                <input type="submit" value="Consultar libros del autor" name="consultarLibrosPorAutor" />
             </form>
 
             <!-- Mostrar los libros del autor aquí -->
-                    </section>
+            <?php
+            if (isset($_POST['consultarLibrosPorAutor'])) {
+                $codigoAutor = $_POST['codAutor'];
+                $db->consultarLibrosPorAutor($codigoAutor);
+            }
+            ?>
+        </section>
 
         <!-- sección para exportar datos -->
-        <section data-element="exportarDatos">
+        <section data-element='exportarDatos'>
             <h2>Exportar datos a un archivo CSV</h2>
             <form action="#" method="POST">
-                <input type="submit" value="Exportar datos" name="exportarDatos">
+                <input type="submit" value="Exportar datos" name="exportarDatos" />
             </form>
         </section>
 
@@ -148,6 +667,6 @@
 	</main>
 	
 
+</body>
 
-
-</body></html>
+</html>
