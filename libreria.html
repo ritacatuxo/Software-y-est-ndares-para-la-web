@@ -1,0 +1,153 @@
+<html lang="es"><head>
+    <!-- Datos que describen el documento -->
+    <meta charset="UTF-8">
+    <title>Libreria</title>
+	<meta name="author" content="Rita Fernandez-Catuxo Ortiz">
+	<!-- Descripción del contenido -->
+	<meta name="description" content="Página que simula una libreria, puedes importar, consultar y exportar datos">
+    <meta name="keywords" content="libreria, libros, autor, pedido, cliente, categoria">
+    <!-- Definir la ventana gráfica -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilo/estilo.css">
+    <link rel="stylesheet" href="estilo/layout.css">
+	<link rel="stylesheet" href="estilo/juegos.css">
+    <link rel="stylesheet" href="estilo/libreria.css">
+    
+</head>
+
+<body>
+	<header>
+        <!-- menú -->
+        <h1>Escritorio Virtual</h1>
+
+            <nav>
+                <a accesskey="I" tabindex="1" href="index.html">Inicio</a>
+                <a accesskey="S" tabindex="2" href="sobremi.html">Sobre mí</a>
+                <a accesskey="N" tabindex="3" href="noticias.html">Noticias</a>
+                <a accesskey="A" tabindex="4" href="agenda.html">Agenda</a>
+                <a accesskey="M" tabindex="5" href="meteorologia.html">Meteorología</a>
+                <a accesskey="V" tabindex="6" href="viajes.php">Viajes</a>
+                <a accesskey="J" tabindex="7" href="juegos.html">Juegos</a>
+            </nav>
+
+    </header>
+    
+
+    <!-- todos los juegos -->
+    <section data-element="juegos">
+        <h2> Juegos disponibles: </h2>
+        <a accesskey="M" tabindex="1" href="memoria.html">Memoria</a>
+        <a accesskey="S" tabindex="2" href="sudoku.html">Sudoku</a>
+        <a accesskey="C" tabindex="3" href="crucigrama.php">Crucigrama</a>
+        <a accesskey="R" tabindex="4" href="api.html">Futbol</a>
+        <a accesskey="L" tabindex="5" href="libreria.php">Libreria</a>
+    </section>
+	
+	<main>
+
+        <!-- sección para cargar los datos desde los archivos csv-->
+        <section data-element="cargarDatos">
+            <h2>Cargar archivos CSV con los datos (en este orden)</h2>
+
+            <article>
+                <h3><strong>Autores</strong></h3>
+                <form action="#" method="POST" enctype="multipart/form-data">
+                    <label>Cargar el archivo CSV de autores: <input type="file" name="autores_csv"></label>
+                    <input type="submit" value="Cargar archivo" name="cargarAutores">
+                </form>
+            </article>
+
+            <article>
+                <h3><strong>Categorias</strong></h3>
+                <form action="#" method="POST" enctype="multipart/form-data">
+                    <label>Cargar el archivo CSV de categorias: <input type="file" name="categorias_csv"></label>
+                    <input type="submit" value="Cargar archivo" name="cargarCategorias">
+                </form>
+            </article>
+
+            <article>
+                <h3><strong>Clientes</strong></h3>
+                <form action="#" method="POST" enctype="multipart/form-data">
+                    <label>Cargar el archivo CSV de clientes: <input type="file" name="clientes_csv"></label>
+                    <input type="submit" value="Cargar archivo" name="cargarClientes">
+                </form>
+            </article>
+
+            <article>
+                <h3><strong>Libros</strong></h3>
+                <form action="#" method="POST" enctype="multipart/form-data">
+                    <label>Cargar el archivo CSV de libros: <input type="file" name="libros_csv"></label>
+                    <input type="submit" value="Cargar archivo" name="cargarLibros">
+                </form>
+            </article>
+
+            <article>
+                <h3><strong>Pedidos</strong></h3>
+                <form action="#" method="POST" enctype="multipart/form-data">
+                    <label>Cargar el archivo CSV de pedidos: <input type="file" name="pedidos_csv"></label>
+                    <input type="submit" value="Cargar archivo" name="cargarPedidos">
+                </form>
+            </article>
+
+            
+        </section>
+
+        <!-- sección para consultar datos -->
+        <section data-element="consultarDatos">
+            <h2>Seleccionar tabla para consultar datos</h2>
+            <form action="#" method="POST">
+                <label for="tabla">Selecciona una tabla:</label>
+                <select name="tabla" id="tabla">
+                    <option value="Libro">Libro</option>
+                    <option value="Cliente">Cliente</option>
+                    <option value="Pedido">Pedido</option>
+                    <option value="Autor">Autor</option>
+                    <option value="Categoria">Categoria</option>
+                </select>
+                <input type="submit" value="Consultar tabla seleccionada" name="consultarTabla">
+            </form>
+
+
+            <!-- Mostrar los datos consultados aquí -->
+                    </section>
+
+        <!-- sección para consultar libros prestados -->
+        <section data-element="consultarLibrosPrestados">
+            <h2>Consultar libros prestados por cliente</h2>
+            <form action="#" method="POST">
+                <label for="codCliente">Código del cliente:</label>
+                <input type="text" name="codCliente" id="codCliente">
+                <input type="submit" value="Consultar libros prestados" name="consultarLibrosPrestados">
+            </form>
+
+            <!-- Mostrar los libros prestados aquí -->
+            <section><h3>Libros prestados al cliente:</h3><ul><li><strong>CODCLIENTE:</strong> 1<br><strong>NOMBRE DEL CLIENTE:</strong> Juan Perez<br><strong>LIBRO PRESTADO:</strong> El Señor de los Anillos</li></ul></section>        </section>
+
+
+        <!-- sección para consultar libros por autor -->
+        <section data-element="consultarLibrosPorAutor">
+            <h2>Consultar libros por autor</h2>
+            <form action="#" method="POST">
+                <label for="codAutor">Código del autor:</label>
+                <input type="text" name="codAutor" id="codAutor">
+                <input type="submit" value="Consultar libros del autor" name="consultarLibrosPorAutor">
+            </form>
+
+            <!-- Mostrar los libros del autor aquí -->
+                    </section>
+
+        <!-- sección para exportar datos -->
+        <section data-element="exportarDatos">
+            <h2>Exportar datos a un archivo CSV</h2>
+            <form action="#" method="POST">
+                <input type="submit" value="Exportar datos" name="exportarDatos">
+            </form>
+        </section>
+
+
+	</main>
+	
+
+
+
+</body></html>
