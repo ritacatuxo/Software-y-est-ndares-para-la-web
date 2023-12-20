@@ -1,3 +1,4 @@
+<!DOCTYPE HTML>
 <html lang="es"><head>
     <!-- Datos que describen el documento -->
     <meta charset="UTF-8">
@@ -92,8 +93,10 @@
         <!-- sección para la selección de archivo -->
         <section data-element="seleccionarCSV">
             <h2>Seleccione un archivo CSV para cargar a los jugadores: </h2>
-            <input type="file" data-element="archivoCSV" onchange="equipo.readInputFile(this.files);" disabled="">
+            <label id='cargar' for="nombre">Seleccionar CSV:</label>
+            <input for='cargar' type="file" data-element="archivoCSV" onchange="equipo.readInputFile(this.files);">
         </section>
+ 
 
 
         <!-- Espacio para mostrar los jugadores -->
