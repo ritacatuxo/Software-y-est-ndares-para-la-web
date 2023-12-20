@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+
+<html lang="es">
+<head>
+    <!-- Datos que describen el documento -->
+    <meta charset="UTF-8" />
+    <title>Inicio</title>
+	<meta name ="author" content ="Rita Fernandez-Catuxo Ortiz" />
+	<meta name ="description" content ="Muestra como fondo de pantalla una imagen relacionada con Portugal (Lisboa)" />
+	<meta name ="keywords" content ="Lisboa, portugal, fondo" />
+	<!-- Definir la ventana gráfica -->
+	<meta name ="viewport" content ="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
+	<link rel="stylesheet" type="text/css" href="estilo/layout.css" />
+	<link rel = "icon" href="multimedia/imagenes/favicon.ico" />
+
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<script src="js/fondo.js"></script>
+	<script>
+        // cuando el documento esté listo, se ejecuta el código
+        $(document).ready(function() {
+            // crear una instancia de la clase Fondo
+            const fondo = new Fondo('Portugal', 'Lisboa', -9.161795736482144, 38.73648107541974);
+
+            // establecer la imagen de fondo
+            fondo.consultaAJAX();
+        });
+    </script>
+
+</head>
+
+
+
+<body>
+	
+    <header>
+	
+		<h1>Escritorio Virtual</h1>
+
+		<nav>
+			<a accesskey="I" tabindex=1 href="index.html">Inicio</a>
+			<a accesskey="S" tabindex=2 href="sobremi.html">Sobre mí</a>
+			<a accesskey="N" tabindex=3 href="noticias.html">Noticias</a>
+			<a accesskey="A" tabindex=4 href="agenda.html">Agenda</a>
+			<a accesskey="M" tabindex=5 href="meteorologia.html">Meteorología</a>
+			<a accesskey="V" tabindex=6 href="viajes.php">Viajes</a>
+			<a accesskey="J" tabindex=7 href="juegos.html">Juegos</a>
+		</nav>
+	
+	</header>
+       
+
+</body>
+</html>

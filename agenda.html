@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html lang="es"><head>
+    <!-- Datos que describen el documento -->
+    <meta charset="UTF-8">
+    <title>Agenda</title>
+	<meta name="author" content="Rita Fernandez-Catuxo Ortiz">
+	<meta name="description" content="Carreras de Formula 1 de esta temporada 2023">
+	<meta name="keywords" content="agenda, formula, carrera">
+	<!-- Definir la ventana gráfica -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
+	<link rel="stylesheet" type="text/css" href="estilo/layout.css">
+	<link rel="stylesheet" type="text/css" href="estilo/agenda.css">
+	<link rel="icon" href="multimedia/imagenes/favicon.ico">
+
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<script src="js/agenda.js"></script>
+</head>
+
+
+
+<body>
+    <header>
+	
+		<h1>Escritorio Virtual</h1>
+
+		<nav>
+			<a accesskey="I" tabindex="1" href="index.html">Inicio</a>
+			<a accesskey="S" tabindex="2" href="sobremi.html">Sobre mí</a>
+			<a accesskey="N" tabindex="3" href="noticias.html">Noticias</a>
+			<a accesskey="A" tabindex="4" href="agenda.html">Agenda</a>
+			<a accesskey="M" tabindex="5" href="meteorologia.html">Meteorología</a>
+			<a accesskey="V" tabindex="6" href="viajes.php">Viajes</a>
+			<a accesskey="J" tabindex="7" href="juegos.html">Juegos</a>
+		</nav>
+	
+	</header>
+
+
+	<main>
+
+		<section data-element="obtenerCarreras">
+			<h2>Agenda de Fórmula 1</h2>
+			<p>Obtener las carreras de esta temporada 2023:</p>
+			<button onclick="agenda.verJSON()"> Obtener carreras </button>
+		</section>
+	</main>	
+
+	<script>
+        let agenda = new Agenda();
+    </script>
+
+
+<section data-element="elementos"><h3>Carreras Fórmula 1 - 2023</h3><article><p><strong>2023-03-05</strong></p><p><strong>15:00</strong></p><h3><strong>Bahrain Grand Prix</strong></h3><p><strong>Circuito</strong>: Bahrain International Circuit</p><p><strong>Localización:</strong> (longitud, latitud) (50.5106, 26.0325)</p></article><hr><article><p><strong>2023-03-19</strong></p><p><strong>17:00</strong></p><h3><strong>Saudi Arabian Grand Prix</strong></h3><p><strong>Circuito</strong>: Jeddah Corniche Circuit</p><p><strong>Localización:</strong> (longitud, latitud) (39.1044, 21.6319)</p></article><hr><article><p><strong>2023-04-02</strong></p><p><strong>05:00</strong></p><h3><strong>Australian Grand Prix</strong></h3><p><strong>Circuito</strong>: Albert Park Grand Prix Circuit</p><p><strong>Localización:</strong> (longitud, latitud) (144.968, -37.8497)</p></article><hr><article><p><strong>2023-04-30</strong></p><p><strong>11:00</strong></p><h3><strong>Azerbaijan Grand Prix</strong></h3><p><strong>Circuito</strong>: Baku City Circuit</p><p><strong>Localización:</strong> (longitud, latitud) (49.8533, 40.3725)</p></article><hr><article><p><strong>2023-05-07</strong></p><p><strong>19:30</strong></p><h3><strong>Miami Grand Prix</strong></h3><p><strong>Circuito</strong>: Miami International Autodrome</p><p><strong>Localización:</strong> (longitud, latitud) (-80.2389, 25.9581)</p></article><hr><article><p><strong>2023-05-28</strong></p><p><strong>13:00</strong></p><h3><strong>Monaco Grand Prix</strong></h3><p><strong>Circuito</strong>: Circuit de Monaco</p><p><strong>Localización:</strong> (longitud, latitud) (7.42056, 43.7347)</p></article><hr><article><p><strong>2023-06-04</strong></p><p><strong>13:00</strong></p><h3><strong>Spanish Grand Prix</strong></h3><p><strong>Circuito</strong>: Circuit de Barcelona-Catalunya</p><p><strong>Localización:</strong> (longitud, latitud) (2.26111, 41.57)</p></article><hr><article><p><strong>2023-06-18</strong></p><p><strong>18:00</strong></p><h3><strong>Canadian Grand Prix</strong></h3><p><strong>Circuito</strong>: Circuit Gilles Villeneuve</p><p><strong>Localización:</strong> (longitud, latitud) (-73.5228, 45.5)</p></article><hr><article><p><strong>2023-07-02</strong></p><p><strong>13:00</strong></p><h3><strong>Austrian Grand Prix</strong></h3><p><strong>Circuito</strong>: Red Bull Ring</p><p><strong>Localización:</strong> (longitud, latitud) (14.7647, 47.2197)</p></article><hr><article><p><strong>2023-07-09</strong></p><p><strong>14:00</strong></p><h3><strong>British Grand Prix</strong></h3><p><strong>Circuito</strong>: Silverstone Circuit</p><p><strong>Localización:</strong> (longitud, latitud) (-1.01694, 52.0786)</p></article><hr><article><p><strong>2023-07-23</strong></p><p><strong>13:00</strong></p><h3><strong>Hungarian Grand Prix</strong></h3><p><strong>Circuito</strong>: Hungaroring</p><p><strong>Localización:</strong> (longitud, latitud) (19.2486, 47.5789)</p></article><hr><article><p><strong>2023-07-30</strong></p><p><strong>13:00</strong></p><h3><strong>Belgian Grand Prix</strong></h3><p><strong>Circuito</strong>: Circuit de Spa-Francorchamps</p><p><strong>Localización:</strong> (longitud, latitud) (5.97139, 50.4372)</p></article><hr><article><p><strong>2023-08-27</strong></p><p><strong>13:00</strong></p><h3><strong>Dutch Grand Prix</strong></h3><p><strong>Circuito</strong>: Circuit Park Zandvoort</p><p><strong>Localización:</strong> (longitud, latitud) (4.54092, 52.3888)</p></article><hr><article><p><strong>2023-09-03</strong></p><p><strong>13:00</strong></p><h3><strong>Italian Grand Prix</strong></h3><p><strong>Circuito</strong>: Autodromo Nazionale di Monza</p><p><strong>Localización:</strong> (longitud, latitud) (9.28111, 45.6156)</p></article><hr><article><p><strong>2023-09-17</strong></p><p><strong>12:00</strong></p><h3><strong>Singapore Grand Prix</strong></h3><p><strong>Circuito</strong>: Marina Bay Street Circuit</p><p><strong>Localización:</strong> (longitud, latitud) (103.864, 1.2914)</p></article><hr><article><p><strong>2023-09-24</strong></p><p><strong>05:00</strong></p><h3><strong>Japanese Grand Prix</strong></h3><p><strong>Circuito</strong>: Suzuka Circuit</p><p><strong>Localización:</strong> (longitud, latitud) (136.541, 34.8431)</p></article><hr><article><p><strong>2023-10-08</strong></p><p><strong>17:00</strong></p><h3><strong>Qatar Grand Prix</strong></h3><p><strong>Circuito</strong>: Losail International Circuit</p><p><strong>Localización:</strong> (longitud, latitud) (51.4542, 25.49)</p></article><hr><article><p><strong>2023-10-22</strong></p><p><strong>19:00</strong></p><h3><strong>United States Grand Prix</strong></h3><p><strong>Circuito</strong>: Circuit of the Americas</p><p><strong>Localización:</strong> (longitud, latitud) (-97.6411, 30.1328)</p></article><hr><article><p><strong>2023-10-29</strong></p><p><strong>20:00</strong></p><h3><strong>Mexico City Grand Prix</strong></h3><p><strong>Circuito</strong>: Autódromo Hermanos Rodríguez</p><p><strong>Localización:</strong> (longitud, latitud) (-99.0907, 19.4042)</p></article><hr><article><p><strong>2023-11-05</strong></p><p><strong>17:00</strong></p><h3><strong>São Paulo Grand Prix</strong></h3><p><strong>Circuito</strong>: Autódromo José Carlos Pace</p><p><strong>Localización:</strong> (longitud, latitud) (-46.6997, -23.7036)</p></article><hr><article><p><strong>2023-11-19</strong></p><p><strong>06:00</strong></p><h3><strong>Las Vegas Grand Prix</strong></h3><p><strong>Circuito</strong>: Las Vegas Strip Street Circuit</p><p><strong>Localización:</strong> (longitud, latitud) (-115.173, 36.1147)</p></article><hr><article><p><strong>2023-11-26</strong></p><p><strong>13:00</strong></p><h3><strong>Abu Dhabi Grand Prix</strong></h3><p><strong>Circuito</strong>: Yas Marina Circuit</p><p><strong>Localización:</strong> (longitud, latitud) (54.6031, 24.4672)</p></article></section></body></html>

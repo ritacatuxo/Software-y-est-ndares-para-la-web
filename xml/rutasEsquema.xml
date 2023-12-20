@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<rutas
+xmlns="https://uniovi.es"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="https://uniovi.es rutas.xsd"
+>
+
+    
+<!-- RUTA 1-->
+<ruta>
+    <nombre>Tui O Porriño</nombre>
+    <tipo>Paisajística</tipo>
+    <transporte>A pie</transporte>
+    <duracion>P0Y0M0DT4H</duracion>
+    <agencia>Sin agencia</agencia>
+    <descripcion>El Camino Portugués se adentra en España por el Puente Internacional sobre el río Miño, inaugurado en marzo de 1886 e influido por los diseños del francés Gustave Eiffel.</descripcion>
+    <personas>Personas con buena forma física</personas>
+    <lugar>Hotel Colon Tui</lugar>
+    <direccion>Hotel Colón Tui, R. Colón, 11, 36700 Tui, Pontevedra</direccion>
+    <coordenada>
+        <longitud>-8.647767074095336</longitud>
+        <latitud>42.04964354293175</latitud>
+        <altitud>26</altitud>
+    </coordenada>
+    <referencia>https://es.wikiloc.com/rutas-senderismo/1-etapa-camino-portugues-tui-o-porrino-150-fotos-138933583</referencia>
+    <referencia>https://www.caminodesantiago.gal/gl/planifica/as-rutas/camino-portugues/etapa-tui-o-porrino</referencia>
+    <referencia>https://caminodesantiago.consumer.es/gl/os-caminos-de-santiago/o-camino-portugues/etapa-de-tui-ao-porrino</referencia>
+    <recomendacion>9</recomendacion>
+    
+    <!--3 hitos-->
+    <hito>
+        <nombre>San Bartolome de Rebordans</nombre>
+        <descripcion>Se encuentra en el kilómetro 3,2 de la ruta</descripcion>
+        <coordenada>
+            <longitud>-8.639004917432683</longitud>
+            <latitud>42.05340860150136</latitud>
+            <altitud>43</altitud>
+        </coordenada>
+        <distanciaAnterior>2.4</distanciaAnterior>
+        <galeriaFotos>
+            <fotografia>
+                <nombreArchivo>SanBartolome.png</nombreArchivo>
+            </fotografia>
+        </galeriaFotos>
+    </hito>
+    <hito>
+        <nombre>Virxe do Camino</nombre>
+        <descripcion>Se encuentra en el kilómetro 5,3 de la ruta</descripcion>
+        <coordenada>
+            <longitud>-8.638699586421223</longitud>
+            <latitud>42.06650774208473</latitud>
+            <altitud>97</altitud>
+        </coordenada>
+        <distanciaAnterior>2.1</distanciaAnterior>
+        <galeriaFotos>
+            <fotografia>
+                <nombreArchivo>Virxe.png</nombreArchivo>
+            </fotografia>
+        </galeriaFotos>
+    </hito>
+    <hito>
+        <nombre>Orbenlle(Bares)</nombre>
+        <descripcion>Se encuentra en el kilómetro 10,9 de la ruta</descripcion>
+        <coordenada>
+            <longitud>-8.633734413512839</longitud>
+            <latitud>42.10318536132574</latitud>
+            <altitud>105</altitud>
+        </coordenada>
+        <distanciaAnterior>5.6</distanciaAnterior>
+        <galeriaFotos>
+            <fotografia>
+                <nombreArchivo>Orbenlle.png</nombreArchivo>
+            </fotografia>
+        </galeriaFotos>
+    </hito>
+
+</ruta>
+
+
+<!-- RUTA 2 -->
+
+<ruta>
+    <nombre>Arantei, vinedos y pesca</nombre>
+    <tipo>Paisajística</tipo>
+    <transporte>A pie</transporte>
+    <duracion>P0Y0M0DT4H</duracion>
+    <agencia>Sin agencia</agencia>
+    <descripcion>La Torre de Lapela en Monção, Portugal, estará en el punto de mira de Los Senderistas del Blog Grupo de Andainas Rías Baixas en esta caminata.</descripcion>
+    <personas>Personas con buena forma física</personas>
+    <lugar>Puente de Fillaboa, Salvaterra de Miño</lugar>
+    <direccion>36458 A Quinta de Fillaboa, Pontevedra</direccion>
+    <coordenada>
+        <longitud>-8.647767074095336</longitud>
+        <latitud>42.085247694262556</latitud>
+        <altitud>65</altitud>
+    </coordenada>
+    <referencia>https://gl.wikiloc.com/rutas-sendeirismo/arantei-vinedos-e-pesqueiras-32285632</referencia>
+    <referencia>https://grupodeandainasriasbaixas.blogspot.com/2021/06/rio-mino-caselas-torre-lapela.html</referencia>
+    <referencia>https://www.amareturismonautico.com/tour/ruta-de-las-artes-de-pesca/</referencia>
+    <recomendacion>9</recomendacion>
+    
+    <!--3 hitos-->
+    <hito>
+        <nombre>La Iglesia de San Pedro de Arantei</nombre>
+        <descripcion>Se encuentra en el kilómetro 2,3 de la ruta</descripcion>
+        <coordenada>
+            <longitud>-8.534233276715808</longitud>
+            <latitud>42.07783766793472</latitud>
+            <altitud>81</altitud>
+        </coordenada>
+        <distanciaAnterior>2.3</distanciaAnterior>
+        <galeriaFotos>
+            <fotografia>
+                <nombreArchivo>Arantei.png</nombreArchivo>
+            </fotografia>
+        </galeriaFotos>
+    </hito>
+    <hito>
+        <nombre>El Pazo de O Souto</nombre>
+        <descripcion>Se encuentra en el kilómetro 6 de la ruta</descripcion>
+        <coordenada>
+            <longitud>-8.638699586421223</longitud>
+            <latitud>42.06650774208473</latitud>
+            <altitud>92</altitud>
+        </coordenada>
+        <distanciaAnterior>3.7</distanciaAnterior>
+        <galeriaFotos>
+            <fotografia>
+                <nombreArchivo>ElPazoSouto.png</nombreArchivo>
+            </fotografia>
+        </galeriaFotos>
+    </hito>
+    <hito>
+        <nombre>La Senda del Rio Caselas</nombre>
+        <descripcion>Se encuentra en el kilómetro 7,6 de la ruta</descripcion>
+        <coordenada>
+            <longitud>-8.550390521681175</longitud>
+            <latitud>42.10513983861443</latitud>
+            <altitud>79</altitud>
+        </coordenada>
+        <distanciaAnterior>1.6</distanciaAnterior>
+        <galeriaFotos>
+            <fotografia>
+                <nombreArchivo>Caselas.png</nombreArchivo>
+            </fotografia>
+        </galeriaFotos>
+    </hito>
+
+</ruta>
+
+
+
+<!-- RUTA 3...-->
+
+<ruta>
+    <nombre>Miradouro de São Lourenço - Cais do Sardinha - Pico do Furado</nombre>
+    <tipo>Paisajística</tipo>
+    <transporte>A pie</transporte>
+    <duracion>P0Y0M0DT4H</duracion>
+    <agencia>Sin agencia</agencia>
+    <descripcion>Agradable sendero por el camino de São Lourenço que le permite explorar la península de São Lourenço.</descripcion>
+    <personas>Personas con buena forma física</personas>
+    <lugar>Miradouro de São Lourenço</lugar>
+    <direccion>ER109, Estr. de São Lourenço, 9200-044 Caniçal, Portugal</direccion>
+    <coordenada>
+        <longitud>-16.70083865926059</longitud>
+        <latitud>32.74470511478551</latitud>
+        <altitud>75</altitud>
+    </coordenada>
+    <referencia>https://www.alltrails.com/es/ruta/portugal/madeira--2/miradouro-de-sao-lourenco-cais-do-sardinha-pico-do-furado</referencia>
+    <referencia>https://es.wikiloc.com/rutas-senderismo/ilha-da-madeira-ponta-de-sao-lourenco-133874943</referencia>
+    <referencia>https://madeiraparaviajeros.com/levadas-trekking-senderismo-en-madeira/ponta-de-sao-lourenco/</referencia>
+    <recomendacion>9</recomendacion>
+    
+    <hito>
+        <nombre>Furna Cave</nombre>
+        <descripcion>Se encuentra en el kilómetro 1,3 de la ruta</descripcion>
+        <coordenada>
+            <longitud>-16.694022834613786</longitud>
+            <latitud>32.75065366070511</latitud>
+            <altitud>86</altitud>
+        </coordenada>
+        <distanciaAnterior>1.5</distanciaAnterior>
+        <galeriaFotos>
+            <fotografia>
+                <nombreArchivo>Furna.png</nombreArchivo>
+            </fotografia>
+        </galeriaFotos>
+    </hito>
+    <hito>
+        <nombre>Sardine Beach</nombre>
+        <descripcion>Se encuentra en el kilómetro 3 de la ruta.</descripcion>
+        <coordenada>
+            <longitud>-16.685659297423165</longitud>
+            <latitud>32.7428828458264</latitud>
+            <altitud>22</altitud>
+        </coordenada>
+        <distanciaAnterior>1.5</distanciaAnterior>
+        <galeriaFotos>
+            <fotografia>
+                <nombreArchivo>Sardine.png</nombreArchivo>
+            </fotografia>
+        </galeriaFotos>
+    </hito>
+    <hito>
+        <nombre>Miradouro Ponta do Furado</nombre>
+        <descripcion>Se encuentra en el kilómetro 3,7 de la ruta</descripcion>
+        <coordenada>
+            <longitud>-16.68033970044531</longitud>
+            <latitud>32.73914145460456</latitud>
+            <altitud>92</altitud>
+        </coordenada>
+        <distanciaAnterior>0.7</distanciaAnterior>
+        <galeriaFotos>
+            <fotografia>
+                <nombreArchivo>PontaFurado.png</nombreArchivo>
+            </fotografia>
+        </galeriaFotos>
+    </hito>
+
+</ruta>
+
+
+</rutas>

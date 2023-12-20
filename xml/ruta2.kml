@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+	<description>Coordenadas de la ruta Arantei, viñedos y pesca</description>
+<Placemark>
+<name>Puente de Fillaboa, Salvaterra de Miño</name>
+<Point>
+<coordinates>
+-8.647767074095336,42.085247694262556,0
+</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>La Iglesia de San Pedro de Arantei</name>
+<Point>
+<coordinates>
+-8.534233276715808,42.07783766793472,0
+</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>El Pazo de O Souto</name>
+<Point>
+<coordinates>
+-8.638699586421223,42.06650774208473,0
+</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>La Senda del Río Caselas</name>
+<Point>
+<coordinates>
+-8.550390521681175,42.10513983861443,0
+</coordinates>
+</Point>
+</Placemark>
+</Document>
+</kml>

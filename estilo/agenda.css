@@ -1,0 +1,60 @@
+
+
+/* Selector Specificity: (0, 0, 1) */
+section[data-element='obtenerCarreras'] {
+    margin: 1em;
+    text-align: center;
+}
+ 
+
+
+/* Selector Specificity: (0, 1, 1) */
+section[data-element="elementos"] {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Selector Specificity: (0, 0, 1) */
+article {
+    width: 45vw;
+    height: auto;
+    margin: 1em;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+}
+
+/* Selector Specificity: (0, 0, 2) */
+article p {
+    font-size: 1.5vw;
+    margin: 1em;
+}
+
+/* Selector Specificity: (0, 0, 1) */
+hr {
+    border: none;
+    height: 0.0625em;
+    background-color: #ccc; /*hereda el color de fondo #fff de body*/
+    width: 50%;
+}
+
+/* Selector Specificity: (0, 0, 1) */
+h3 {
+    font-size: 1.5vw;
+    margin-bottom: 2em;
+    margin-left: 1em;
+    
+}
+
+/* Selector Specificity: (0, 1, 2), (0, 1, 2) */
+/* fecha, hora */
+article p:nth-child(1), article p:nth-child(2) {
+    float: right;
+    margin-right: 1em;
+}
+
+

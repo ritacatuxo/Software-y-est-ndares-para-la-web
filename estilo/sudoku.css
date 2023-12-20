@@ -1,0 +1,86 @@
+
+/* Selector Specificity: (0, 0, 1) */
+h2 {
+    text-align: center;
+    margin-top: 1.5em;
+}
+
+/* Selector Specificity: (0, 1, 1) */
+section[data-element="sudoku"] {
+    width: 25.25em;
+    max-width: 31.25em;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    margin:auto;
+    
+}
+
+/* Selector Specificity: (0, 1, 2) */
+section[data-element="sudoku"] h2 {
+    width: 100%;
+    text-align: center;
+    margin: 1.25em 0;
+}
+
+/* Selector Specificity: (0, 1, 1) */
+h2[data-row="0"] {
+    grid-column: 1 / -1; /* Ocupa desde la columna 1 hasta la última columna */
+}
+  
+/* Selector Specificity: (0, 0, 1) */
+p {
+    display: grid;
+    padding: 1em;
+    margin: 0;
+    text-align: center;
+    border: 0.0625em solid gray;
+    font-weight: bold;
+    
+}
+
+/* Selector Specificity: (0, 1, 1) */
+p.clicked {
+    cursor: pointer;
+    background-color: lightblue;  /*hereda el color de fondo #fff de body*/
+}
+
+/* Selector Specificity: (0, 1, 1) */
+p[data-state="blocked"] {
+    background-color: #A7BAC3; /*hereda el color de fondo #fff de body*/
+}
+
+
+/* Resaltar las 4 partes del borde del tablero 9x9 */
+/* Línea superior */
+/* Selector Specificity: (0, 1, 1) */
+p:nth-child(-n + 10) {
+    border-top: 0.1875em solid black;
+}
+
+/* Línea inferior */
+/* Selector Specificity: (0, 1, 1) */
+p:nth-last-child(-n + 9) {
+    border-bottom: 0.1875em solid black;
+}
+
+/* Línea izquierda */
+/* Selector Specificity: (0, 1, 1) */
+p:nth-child(9n - 7) {
+    border-left: 0.1875em solid black;
+}
+
+/* Líneas verticales */
+/* Aplica un borde derecho a la tercera celda de cada sub-cuadrícula 3x3 */
+/* Selector Specificity: (0, 1, 1) */
+p:nth-child(3n+1) {
+    border-right: 0.1875em solid black;
+}
+
+/* Líneas horizontales */
+/* Aplica un borde inferior a la tercera fila de celdas de cada sub-cuadrícula 3x3 */
+/* Selector Specificity: (0, 2, 1), (0, 2, 1) */
+p:nth-child(n + 20):nth-child(-n + 28),
+p:nth-child(n + 47):nth-child(-n + 55) {
+    border-bottom: 0.1875em solid black;
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+	<description>Coordenadas de la ruta Tui O Porriño</description>
+<Placemark>
+<name>Hotel Colon Tui</name>
+<Point>
+<coordinates>
+-8.647767074095336,42.04964354293175,0
+</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>San Bartolomé de Rebordans</name>
+<Point>
+<coordinates>
+-8.639004917432683,42.05340860150136,0
+</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Virxe do Camiño</name>
+<Point>
+<coordinates>
+-8.638699586421223,42.06650774208473,0
+</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Orbenlle(Bares)</name>
+<Point>
+<coordinates>
+-8.633734413512839,42.10318536132574,0
+</coordinates>
+</Point>
+</Placemark>
+</Document>
+</kml>

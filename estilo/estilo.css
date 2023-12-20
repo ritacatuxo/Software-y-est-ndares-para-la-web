@@ -1,0 +1,117 @@
+/* datos personales Rita Fernández-Catuxo Ortiz, UO284185*/
+
+
+/*
+Gama cromática
+Color del nav (fondo del elemento header) : #A3D3FF
+Links visitados -> #0E00CC
+*/ 
+
+
+
+/* Selector Specificity: (0, 0, 1) */
+body {
+    font-family: Tahoma, sans-serif; /* tipografía */
+    background-color: #fff;
+    color: #000;
+}
+
+/* Selector Specificity: (0, 0, 1) */
+header{
+    background-color: #A3D3FF; /*hereda el color de fondo #fff de body*/
+    color: #000; /*hereda el color de foreground #000 de body*/
+    padding: 0.625em;
+  }
+
+/* Selector Specificity: (0, 0, 1) */
+h1 {
+    font-weight: bold;
+}
+
+/* Selector Specificity: (0, 0, 1) */
+h2 {
+    font-weight: 600;
+}
+
+/* Selector Specificity: (0, 0, 1) */
+h3 {
+    font-weight: 500;
+}
+
+/* Selector Specificity: (0, 0, 1) */
+h4 {
+    font-weight: normal;
+}
+
+
+/* Selector Specificity: (0, 1, 1) */
+a:visited {
+    /*Hereda el color de fondo de body #FFFFFF */
+    color: #0E00CC; /*Hereda el color de primer plano de body #071330 pero el agente de usuario le pone uno por defecto al ser visitado*/
+}
+
+/* lista no ordenada 
+Selector Specificity: (0, 0, 1) */
+ul {
+    list-style-type: square; /* Cambiar el tipo de viñeta a cuadrada */
+    font-size: 1em;
+}
+ 
+
+/* lista ordenada 
+Selector Specificity: (0, 0, 1) */
+ol {
+    list-style-type: upper-roman; /* Cambiar el tipo de viñeta a números romanos */
+    font-size: 1em;
+ }
+
+/* lista de definición 
+/* Selector Specificity: (0, 0, 1) */
+dt {
+    font-size: 1em;
+    font-weight: bold;
+    color: #094078;  /*hereda el color de foreground #000 body*/
+}
+
+/* lista de definición 
+/* Selector Specificity: (0, 0, 1) */
+dl {
+    font-size: 1em;
+    color: #094078; /*hereda el color de foreground #000 body*/
+}
+
+/* lista de definición - description
+/* Selector Specificity: (0, 0, 1) */
+dd {
+    font-size: 1em;
+    color: #094078; /*hereda el color de foreground #000 body*/
+}
+
+/* Destacar tercer elemento de la lista no ordenada
+/* Selector Specificity: (1, 1, 3) */
+ul li:nth-child(3) {
+    color: rgb(14, 135, 73); /*hereda el color de foreground #000 body*/
+}
+
+
+/* Selector Specificity: (0, 0, 1) */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    
+    text-align: left;
+}
+
+/* Selector Specificity: (0, 0, 1), (0, 0, 1) */
+th, td {
+    border: 0.0625em solid #ddd;
+    padding: 0.5em;
+    text-align: center;
+}
+
+/* Selector Specificity: (0, 1, 1), (0, 0, 1) */
+video, picture {
+    width: 45vw;
+    height: 45vh;
+}
+

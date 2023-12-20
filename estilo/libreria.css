@@ -1,0 +1,28 @@
+/* Selector Specificity: (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0) */
+[data-element='cargarDatos'], [data-element='exportarDatos'], [data-element='consultarDatos'], [data-element='consultarLibrosPrestados'], [data-element='consultarLibrosPorAutor'] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border:solid;
+    border-radius:2em;
+    width: 60%;
+    margin: 0 auto;
+    margin-bottom: 2em;
+    padding: 2em;
+}
+
+/* Selector Specificity: (0, 1, 1) */
+[data-element='cargarDatos'] > article {
+    margin-bottom: 2em;
+}
+
+/* Selector Specificity: (0, 1, 1) */
+[data-element='consultarDatos'] > h3 {
+    margin-top: 3em;
+}
+
+/* Selector Specificity: (0, 0, 1), (0, 0, 2), (0, 1, 2) */
+ul, ul ul, ul li:nth-child(3) {
+    color: #000; /*hereda el color de foreground rgb(14, 135, 73) de body*/
+}
+

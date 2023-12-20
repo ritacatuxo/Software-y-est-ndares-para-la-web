@@ -1,0 +1,191 @@
+/* Selector Specificity: (0, 1, 1), (0, 1, 1), (0, 1, 1) */
+section[data-element=estatico], section[data-element=dinamico], section[data-element="kml"] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Selector Specificity: (0, 1, 1) */
+figure[data-element='mapaEstatico'] img{
+    width: 80%;
+    height: auto;
+}
+
+/* Darle un tamaño al mapa porque sino no se representa */
+/* Selector Specificity: (0, 1, 1) */
+figure[data-element='mapaDinamico'] { 
+    width:60%; 
+    height:30vw;
+}
+
+/* Selector Specificity: (0, 1, 1) */
+figure[data-element='mapaDinamicoKml'] {
+    width:30%; 
+    height:60vw; 
+}
+
+
+
+/* representaciónd el xml (rutas) */
+/* Selector Specificity: (0, 1, 1) */
+section[data-element="elementos"] {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Selector Specificity: (0, 1, 1) */
+section[data-element="xml"] {
+    text-align: -webkit-center;
+}
+
+
+/* Selector Specificity: (0, 1, 2) */
+section[data-element="xml"] article {
+    width: auto;
+    height: auto;
+    margin: 1em;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+    text-align: left;
+    background: #A3D3FF; /*hereda el color de fondo #fff de body*/
+    padding: 1em;
+}
+
+/* Selector Specificity: (0, 1, 3), (0, 0, 1) */
+section[data-element="xml"] article p, h4 {
+    margin: 1em;
+}
+
+/* Selector Specificity: (0, 0, 1) */
+ul {
+    margin: 1em;
+    margin-bottom: 1em;
+    text-align: left;
+}
+
+/* Selector Specificity: (0, 1, 2) */
+ul li:nth-child(3) {
+    color: #000;  /*hereda el color de foreground rgb(14, 135, 73)*/
+}
+
+/* Selector Specificity: (0, 0, 1) */
+h2 {
+    text-align: center;
+}
+
+/* Selector Specificity: (0, 0, 1) */
+h3 {
+    font-size: 3vw;
+    text-align:center;
+}
+
+/* Selector Specificity: (0, 0, 1), (0, 0, 1) */
+h4, h5 {
+    text-align: center;
+}
+
+/* Selector Specificity: (0, 0, 1) */
+input {
+    display: block;
+    margin: 0 auto;
+}
+
+/* Selector Specificity: (0, 1, 1) */
+figure[data-element="contenedorSVGs"]{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Selector Specificity: (0, 1, 2) */
+figure[data-element="contenedorSVGs"] img {
+    width: 60vw;
+    height: 40vh;
+} 
+ 
+
+/* Carrusel */
+
+/* Selector Specificity: (0, 1, 1) */
+article[data-element='carrusel']
+{
+    margin: auto; 
+    margin-bottom: 2em;
+}
+
+/* Selector Specificity: (0, 0, 1) */
+article {
+  width: 100%;
+  max-width: 100vh;
+  height: 70vh;
+  position: relative;
+  overflow: hidden; /* <===  */
+  border-radius: 1em;
+}
+
+/* Selector Specificity: (0, 0, 2) */
+article h3 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.5em;
+    font-size: 2em;
+}
+
+/* Selector Specificity: (0, 1, 1) */
+[data-element="carrusel"] img {
+  width: 100%;
+  max-width: 100vh;
+  height: 60vh;
+  position: absolute;
+  transition: all 0.5s;
+  object-fit: cover;
+  border-radius: 0.5em;
+}
+
+/* Selector Specificity: (0, 0, 1) */
+button {
+  position: absolute;
+  width: 2em;
+  height: 2em;
+  padding: 0.5em;
+  border: none;
+  border-radius: 50%;
+  z-index: 10;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+/* Selector Specificity: (0, 1, 1) */
+button:active {
+  transform: scale(1.1);
+}
+
+/* Selector Specificity: (0, 1, 1) */
+button[data-action=prev] {
+    top: 50%;
+    left: 2%;
+}
+
+/* Selector Specificity: (0, 1, 1) */
+ button[data-action=next] {
+    top: 50%;
+    right: 2%;
+}
+
+/* Cambio de moneda */
+/* Selector Specificity: (0, 1, 1) */
+section[data-element="cambioMoneda"] {
+    border: solid;
+    text-align-last: center;
+    margin-top: 2em;
+    border-radius:2em;
+    width: 60%;
+    margin: 0 auto;
+    margin-bottom: 2em;
+    padding: 1em;
+}

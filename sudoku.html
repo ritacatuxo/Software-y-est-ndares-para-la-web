@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+
+<html lang="es">
+<head>
+    <!-- Datos que describen el documento -->
+    <meta charset="UTF-8" />
+    <title>Sudoku</title>
+	<meta name ="author" content ="Rita Fernandez-Catuxo Ortiz" />
+	<meta name ="description" content ="Juego de sudoku" />
+    <meta name ="keywords" content ="juego, sudoku, numero" />
+    <!-- Definir la ventana gráfica -->
+	<meta name ="viewport" content ="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="estilo/estilo.css">
+    <link rel="stylesheet" href="estilo/layout.css">
+    <link rel="stylesheet" href="estilo/juegos.css">
+	<link rel="stylesheet" href="estilo/sudoku.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+
+
+
+<body>
+
+    <header>
+        <!-- menú -->
+        <h1>Escritorio Virtual</h1>
+
+            <nav>
+                <a accesskey="I" tabindex=1 href="index.html">Inicio</a>
+                <a accesskey="S" tabindex=2 href="sobremi.html">Sobre mí</a>
+                <a accesskey="N" tabindex=3 href="noticias.html">Noticias</a>
+                <a accesskey="A" tabindex=4 href="agenda.html">Agenda</a>
+                <a accesskey="M" tabindex=5 href="meteorologia.html">Meteorología</a>
+                <a accesskey="V" tabindex=6 href="viajes.php">Viajes</a>
+                <a accesskey="J" tabindex=7 href="juegos.html">Juegos</a>
+            </nav>
+
+    </header>
+
+    <!-- todos los juegos -->
+        
+    <section data-element="juegos">
+        <h2> Juegos disponibles: </h2>
+        <a accesskey="M" tabindex=1 href="memoria.html">Memoria</a>
+        <a accesskey="S" tabindex=2 href="sudoku.html">Sudoku</a>
+        <a accesskey="C" tabindex=3 href="crucigrama.php">Crucigrama</a>
+        <a accesskey="R" tabindex=4 href="api.html">Futbol</a>
+        <a accesskey="L" tabindex=5 href="libreria.php">Libreria</a>
+    </section>
+
+    <main>
+    </main>
+
+
+	<script src="js/sudoku.js"></script>
+	<script>
+        const sudoku = new Sudoku("3.4.69.5....27...49.2..4....2..85.198.9...2.551.39..6....8..5.32...46....4.75.9.6");
+        sudoku.paintSudoku();
+
+        // tratamiento del evento de teclado 
+        document.addEventListener('keydown', (event) => {
+
+            // verificar si la tecla presionada es un número entre 1 y 9
+            const keyPressed = event.key;
+            const isNumberKey = !isNaN(parseInt(keyPressed)) 
+                                && parseInt(keyPressed) >= 1 
+                                && parseInt(keyPressed) <= 9;
+
+            // verificar si una celda no bloqueada está seleccionada
+            const selectedCell = document.querySelector('p[data-state="clicked"]');
+            const isCellSelected = selectedCell && selectedCell.getAttribute('data-state') !== 'blocked';
+            
+            if (isCellSelected) {
+
+                if (isNumberKey) 
+                    sudoku.introduceNumber(parseInt(keyPressed));
+                else
+                {
+                    alert('Tecla pulsada no es un número del 1 al 9');
+                    selectedCell.blur()
+                }
+            }
+            else
+                alert('Debe seleccionar una celda antes de introducir un número.');  
+            
+        });
+    </script>
+</body>
+</html>

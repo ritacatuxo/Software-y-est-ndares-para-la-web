@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html lang="es"><head>
+    <!-- Datos que describen el documento -->
+    <meta charset="UTF-8">
+    <title>Noticias</title>
+	<meta name="author" content="Rita Fernandez-Catuxo Ortiz">
+	<meta name="description" content="Página que importa un archivo y muestra todas sus noticias">
+	<meta name="keywords" content="noticia">
+	<!-- Definir la ventana gráfica -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
+	<link rel="stylesheet" type="text/css" href="estilo/layout.css">
+	<link rel="stylesheet" type="text/css" href="estilo/noticias.css">
+	<link rel="icon" href="multimedia/imagenes/favicon.ico">
+
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<script src="js/noticias.js"></script>
+	
+</head>
+
+
+
+<body>
+
+    <header>
+		<h1>Escritorio Virtual</h1>
+		<nav>
+			<a accesskey="I" tabindex="1" href="index.html">Inicio</a>
+			<a accesskey="S" tabindex="2" href="sobremi.html">Sobre mí</a>
+			<a accesskey="N" tabindex="3" href="noticias.html">Noticias</a>
+			<a accesskey="A" tabindex="4" href="agenda.html">Agenda</a>
+			<a accesskey="M" tabindex="5" href="meteorologia.html">Meteorología</a>
+			<a accesskey="V" tabindex="6" href="viajes.php">Viajes</a>
+			<a accesskey="J" tabindex="7" href="juegos.html">Juegos</a>
+		</nav>
+	</header>
+
+	
+
+	<main>
+	
+
+		<!-- sección para la selección de archivo -->
+		<section data-element="seleccionarArchivo">
+			<h2>Subir archivo</h2>
+			<label for="file">Seleccione un archivo de texto:</label>
+			<input id="file" type="file" data-element="archivoTexto" onchange="noticia.readInputFile(this.files);">
+		</section><section data-element="elementos"><h2>Noticias</h2><article><h3><strong>El aumento de la producción científica desborda de papeleo a la Universidad</strong></h3><p><strong>Subtítulo</strong>: El Rector promete cambiar el servicio de gestión y contratar personal</p><p><strong>Texto</strong>: A la Universidad de Oviedo le desborda el papeleo por el gran salto dado en investigación</p><p data-element="autor"><i>Mónica Salas</i></p></article><article><h3><strong>La Universidad presume de equipos deportivos en una jornada ilusionante</strong></h3><p><strong>Subtítulo</strong>: La presentación tuvo lugar en el polideportivo universitario</p><p><strong>Texto</strong>: Ayer, por primera vez, todos los equipos deportivos de la Universidad de Oviedo realizaron una presentación conjunta</p><p data-element="autor"><i>Juan Sanchez</i></p></article><article><h3><strong>Investigadores que se van por unos meses al otro lado, a la empresa</strong></h3><p><strong>Subtítulo</strong>: Deberían hacerlo todos los científicos, afirman un psicólogo y una informática</p><p><strong>Texto</strong>: Una cosa es colaborar con una empresa y otra bien diferente es poder trabajar en ella durante unos meses</p><p data-element="autor"><i>Manuel Rodriguez</i></p></article><article>
+                <h3><strong>a</strong></h3>
+                <p><strong>Subtítulo</strong>: a</p>
+                <p><strong>Texto</strong>: a</p>
+                <p data-element="autor"><i>a</i></p>
+                </article></section>
+
+		<!-- sección para añadir más noticias -->
+		<section data-element="inputsNoticia">
+
+			<h2>Añadir Noticia</h2>
+
+			<label for="titulo">Título:</label>
+			<input id="titulo" type="text" data-element="inputTitulo" placeholder="Título">
+			<label for="subtitulo">Subtitulo:</label>
+			<input id="subtitulo" type="text" data-element="inputSubtitulo" placeholder="Subtítulo">
+			<label for="autor">Autor:</label>
+			<input id="autor" type="text" data-element="inputAutor" placeholder="Autor">
+			<label for="texto">Título:</label>
+			<textarea id="texto" data-element="inputTexto" rows="5" cols="24" placeholder="Texto de la noticia"></textarea>
+
+			<button data-element="agregarNoticia" onclick="noticia.agregarNoticia()">Agregar Noticia</button>
+		</section>
+
+	</main> 
+
+	<script>
+		const noticia = new Noticias();
+	</script>
+
+
+</body></html>

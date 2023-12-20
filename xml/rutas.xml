@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rutas SYSTEM "rutas.dtd"> 
+<rutas>
+    
+<!-- RUTA 1-->
+<ruta>
+    <nombre>Tui O Porriño</nombre>
+    <tipo>Paisajística</tipo>
+    <transporte>A pie</transporte>
+    <fechaInicio>01-06-2023</fechaInicio>
+    <horaInicio>31-08-2023</horaInicio>
+    <duracion>4 horas 23 minutos</duracion>
+    <agencia>Sin agencia</agencia>
+    <descripcion>El Camino Portugués se adentra en España por el Puente Internacional sobre el río Miño, inaugurado en marzo de 1886 e influido por los diseños del francés Gustave Eiffel.</descripcion>
+    <personas>Personas con buena forma física</personas>
+    <lugar>Hotel Colon Tui</lugar>
+    <direccion>Hotel Colón Tui, R. Colón, 11, 36700 Tui, Pontevedra</direccion>
+    <coordenada>
+        <longitud>-8.647767074095336</longitud>
+        <latitud>42.04964354293175</latitud>
+        <altitud>0</altitud>
+    </coordenada>
+    <referencia>https://es.wikiloc.com/rutas-senderismo/1-etapa-camino-portugues-tui-o-porrino-150-fotos-138933583</referencia>
+    <recomendacion>9</recomendacion>
+    
+    <hito>
+        <nombre>Camino de Santiago Portugués</nombre>
+        <descripcion>Hito de piedra del Camino de Santiago Portugués que marca 115,454 kilómetros hasta Santiago de Compostela.</descripcion>
+        <coordenada>
+            <longitud>-8.645738549618532</longitud>
+            <latitud>42.041157178592094</latitud>
+            <altitud>0</altitud>
+        </coordenada>
+        <distanciaAnterior>0,8 km</distanciaAnterior>
+        <galeriaFotos>
+            <fotografia>
+                <nombreArchivo>El Aleph</nombreArchivo>
+            </fotografia>
+        </galeriaFotos>
+        <galeriaVideos>
+            <video>
+                <nombreArchivo>El Aleph</nombreArchivo>
+            </video>
+        </galeriaVideos>
+    </hito>
+
+</ruta>
+
+
+<!-- RUTA 2...-->
+
+<!-- RUTA 3...-->
+
+
+
+</rutas>

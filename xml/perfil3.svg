@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" version="2.0">
+<polyline points="
+60,150
+60,75
+185.0,64
+310.0,128
+395.0,58
+395.0,150
+60,150
+"
+style="fill:white;stroke:red;stroke-width:4" />
+<text x="110" y="155" style="writing-mode: tb; glyph-orientation-vertical: 0;">
+Miradouro de Sao Lourenzo
+</text>
+<text x="235.0" y="155" style="writing-mode: tb; glyph-orientation-vertical: 0;">
+Furna Cave
+</text>
+<text x="360.0" y="155" style="writing-mode: tb; glyph-orientation-vertical: 0;">
+Sardine Beach
+</text>
+<text x="445.0" y="155" style="writing-mode: tb; glyph-orientation-vertical: 0;">
+Miradouro Ponta do Furado
+</text>
+</svg>

@@ -1,0 +1,229 @@
+<!DOCTYPE HTML>
+
+<html lang="es">
+<head>
+    <!-- Datos que describen el documento -->
+    <meta charset="UTF-8" />
+    <title>Sobre mi</title>
+	<meta name ="author" content ="Rita Fernandez-Catuxo Ortiz" />
+	<meta name ="description" content ="Escritorio Virtual de Rita Fernandez-Catuxo Ortiz. Página con información interesante sobre mi." />
+	<meta name ="keywords" content ="Metadatos,HTML5,CSS3,Javascript" />
+	<!-- Definir la ventana gráfica -->
+	<meta name ="viewport" content ="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="estilo/estilo.css" /> 
+	<link rel="stylesheet" type="text/css" href="estilo/layout.css" /> 
+	<link rel = "icon" href="multimedia/imagenes/favicon.ico" />
+</head>
+
+
+
+<body>
+
+	<header>
+	
+		<h1>Escritorio Virtual</h1>
+
+		<nav>
+			<a accesskey="I" tabindex=1 href="index.html">Inicio</a>
+			<a accesskey="S" tabindex=2 href="sobremi.html">Sobre mí</a>
+			<a accesskey="N" tabindex=3 href="noticias.html">Noticias</a>
+			<a accesskey="A" tabindex=4 href="agenda.html">Agenda</a>
+			<a accesskey="M" tabindex=5 href="meteorologia.html">Meteorología</a>
+			<a accesskey="V" tabindex=6 href="viajes.php">Viajes</a>
+			<a accesskey="J" tabindex=7 href="juegos.html">Juegos</a>
+		</nav>
+	
+	</header>
+
+
+	<main>
+	
+	
+		<!-- sección con mis datos personales -->
+		<section>
+			<h2>Datos personales</h2>
+			
+
+			<p>Nombre: Rita</p>
+			<p>Apellidos: Fernández-Catuxo Ortiz</p>
+			<p>UO: 284185</p>
+			<p>Email: ritafdezortiz@gmail.com</p>
+			<p>Me llamo Rita y soy de Tapia de Casariego (Asturias), aunque actualmente vivo en Oviedo con mis dos hermanos (Luis y Tomás), somos trillizos.
+			
+				Estudio Ingeniería Informática del Software en la Universidad de Oviedo</p>
+
+		
+			<picture>
+				<source srcset="multimedia/imagenes/yo-moviles.jpg" media="(max-width: 465px)">
+				<source srcset="multimedia/imagenes/yo-tablets.jpg" media="(max-width: 799px)">
+				<source srcset="multimedia/imagenes/yo-monitores.jpg" media="(max-width: 800px)">
+					<img src="multimedia/imagenes/yo-monitores.jpg" alt="Foto analógica de Rita en Suecia">
+			</picture>
+		
+		</section>
+		
+		<!-- sección con listas -->
+		<section>
+		
+			<!-- lista desordenada y anidada-->
+			<h2>Lista de aficiones</h2>
+				<ul>
+					<li>Instrumentos</li>
+					<li>Deportes</li>
+					<li>Baile</li>
+					<li>Alemán</li>
+					<li>Viajar</li>
+				</ul>
+				
+		</section>
+		
+		<section>
+			<!-- lista ordenada -->
+			<h2>Grupos musicales o cantantes favoritos</h2>
+				<ol>
+					<li value="1">Leiva
+						<ol>
+							<li>Breaking Bad</li>
+							<li>Sincericidio</li>
+							<li>La lluvia en los zapatos</li>
+						</ol></li>
+					<li value="2">Vetusta Morla
+						<ol>
+							<li>Copenhague</li>
+							<li>Valiente</li>
+							<li>Saharabbey Road</li>
+						</ol></li>
+					<li value="3">Xoel López
+						<ol>
+							<li>Lodo</li>
+							<li>Tierra</li>
+							<li>Madrid</li>
+						</ol></li>
+				</ol>
+				
+				
+				<h3><a title="Canción favorita" target="_blank" href="https://open.spotify.com/intl-es/track/05ascW5kZSLsGM7sdr9Eot?si=bb3682494b7c4554">Link</a> a mi canción favorita de Xoel López</h3>
+				
+				
+				<!-- Imagen -->
+				<h3> Multimedia - Imagen</h3>
+				
+				<picture>
+					<source srcset="multimedia/imagenes/fotoCancionFav-moviles.jpg" media="(max-width: 465px)">
+					<source srcset="multimedia/imagenes/fotoCancionFav-tablets.jpg" media="(max-width: 799px)">
+					<source srcset="multimedia/imagenes/fotoCancionFav-monitores.jpg" media="(max-width: 800px)">
+						<img src="multimedia/imagenes/fotoCancionFav-monitores.jpg" alt="Portada del disco de mi canción favorita">
+				</picture>
+				
+				
+				<!-- Video -->
+				<h3> Multimedia - Video (mp4 y webm)</h3>
+				
+				<video controls preload="auto">
+					<source src="multimedia/videos/videoCancionFav.mp4" type="video/mp4" />
+					<source src="multimedia/videos/videoCancionFav.webm" type="video/webm" />
+				</video>
+				
+				
+				
+				
+				<!-- Audio -->
+				<h3> Multimedia - Audio (mp3 y wav)</h3>
+			
+				<audio controls>
+					<source src="multimedia/audios/audioCancionFav.mp3" type="audio/mp3" />
+					<source src="jmultimedia/audios/audioCancionFav.wav" type="audio/wav" />
+				</audio>
+				
+		</section>		
+				
+				
+		<section>		
+			<!-- lista de definición -->
+			<h2>Lista con las 5 asignaturas del grado que más me han gustado hasta el momento</h2>
+			<dl> 
+				<dt>Sistemas operativos</dt>
+						<dd>En la asignatura se estudian las bases organizativas, los conceptos básicos y los servicios que ofrece un componente fundamental en todo sistema informático, como es el sistema operativo.</dd>
+				<dt>Comunicación persona-máquina</dt>
+						<dd>Esta asignatura se enmarca dentro de la materia de Interacción y Multimedia, y en el módulo Común de Informática.</dd>
+				<dt>Arquitectura de computadores</dt>
+						<dd>Pertenece a la materia Soporte físico y Hardware y está encuadrada dentro del módulo Común Informática.</dd>
+				<dt>Repositorios de información</dt>
+						<dd>Conocimiento y aplicación de las características, funcionalidades y estructura de las bases de datos, que permitan su adecuado uso, y el diseño y el análisis e implementación de aplicaciones basadas en ellos.</dd>
+				<dt>Bases de datos</dt>
+						<dd>Sistemas de Gestión de Bases de Datos, modelos de datos y ciclo de vida del desarrollo de bases de datos y diseño conceptual de bases de datos.</dd>
+			</dl>
+			
+		</section>	
+		
+		
+		<aside>
+			
+			<h2>Temperaturas en la ciudad de Oviedo</h2>
+			<table>
+				<caption><h2>Temperaturas medias anuales en Oviedo</h2></caption>  
+				<tr>
+					<th scope="col" id="año">Año</th>
+					<th scope="col" id="tmedia">T media</th>
+				</tr>
+				<tr>
+					<th scope="row" id="2012" headers="año">2012</th>
+					<td headers="2012 tmedia">12.7</td>
+				</tr>
+				<tr>
+					<th scope="row" id="2013" headers="año">2013</th>
+					<td headers="2013 tmedia">12.3</td>
+				</tr>	
+				<tr>
+					<th scope="row" id="2014" headers="año">2014</th>
+					<td headers="2014 tmedia">13.5</td>
+				</tr>	
+				<tr>
+					<th scope="row" id="2015" headers="año">2015</th>
+					<td headers="2015 tmedia">13.4</td>
+				</tr>
+				<tr>
+					<th scope="row" id="2016" headers="año">2016</th>
+					<td headers="2016 tmedia">13.2</td>
+				</tr>
+				<tr>
+					<th scope="row" id="2017" headers="año">2017</th>
+					<td headers="2017 tmedia">13.3</td>
+				</tr>
+				<tr>
+					<th scope="row" id="2018" headers="año">2018</th>
+					<td headers="2018 tmedia">13.1</td>
+				</tr>
+				<tr>
+					<th scope="row" id="2019" headers="año">2019</th>
+					<td headers="2019 tmedia">13.2</td>
+				</tr>
+				<tr>
+					<th scope="row" id="2020" headers="año">2020</th>
+					<td headers="2020 tmedia">13.8</td>
+				</tr>
+				<tr>
+					<th scope="row" id="2021" headers="año">2021</th>
+					<td headers="2021 tmedia">13.0</td>
+				</tr>
+				<tr>
+					<th scope="row" id="2022" headers="año">2022</th>
+					<td headers="2022 tmedia">14.0</td>
+				</tr>
+			</table>
+				
+		</aside>
+			
+			
+			
+			
+		<p>Fuente: <a title="Acceder a la página web" target="_blank" href="https://www.tutiempo.net/clima/ws-80150.html">https://www.tutiempo.net/clima/ws-80150.html</a></p>
+		
+		
+	
+	</main>
+	
+	
+	
+</body>
+</html>

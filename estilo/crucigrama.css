@@ -1,0 +1,160 @@
+/* Selector Specificity: (0, 1, 1) */
+section[data-element="crucigrama"] {
+    
+    display: grid;
+    grid-template-columns: repeat(9, 5vw); /* 9 columnas*/
+    grid-template-rows: repeat(12, 3vw); /* 11 filas */
+    justify-content: center;
+    vertical-align: middle;
+    
+    grid-template-rows: 6.25em;
+}
+
+/* Selector Specificity: (0, 1, 1) */
+section[data-element="crucigrama"] h2 {
+    grid-column: 1 / -1; /* Ocupa desde la columna 1 hasta la última columna */
+    text-align: center; 
+    font-size: 1em;
+    margin: auto;
+}
+
+/* Selector Specificity: (0, 0, 1) */
+section[data-element="crucigrama"] p {
+    margin: 0;
+    text-align: center;
+    border: 0.005em solid #000;
+    font-size: 1.5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3vw;
+}
+
+/* Selector Specificity: (0, 1, 1) */
+p[data-state="clicked"]{ 
+    cursor: pointer;
+}
+/* Selector Specificity: (0, 1, 1) */
+p[data-state="blocked"] {
+    cursor: pointer;
+}
+/* Selector Specificity: (0, 1, 1) */
+p[data-state="empty"] {
+    background-color: #000; /*hereda el color de fondo #fff de body*/
+}
+
+/* formulario */
+/* Selector Specificity: (0, 0, 1) */
+form {
+    padding: 1.5em;
+    display: grid; 
+    gap: 0.75em;
+
+    background-color: #EED6D3;
+    border-radius: 0.2em;
+    margin: 0.5em;
+}
+
+/* Selector Specificity: (0, 0, 1) */
+input {
+    font: 1.25em 'Courier New', Courier, monospace;
+    margin-left: 0.5em;
+    padding-left: 0.5em;
+
+    border: 0.2em solid #ccc;
+    border-radius: 0.2em;
+    
+    font-size: 2.25em;
+}
+
+/* Selector Specificity: (0, 1, 1) */
+input[type="submit"] {
+    height: 2.5vw;
+    width: 25vw;
+    border-radius: 0.5em; /* esquinas redondas */
+    cursor: pointer;
+    text-align: center;
+    justify-self: right;
+    text-align-last: center;
+}
+
+/* Selector Specificity: (0, 1, 1) */
+section[data-element="formulario"] {
+    display:flex;
+    align-items:center;
+    text-align: center;
+    text-align-last: justify;
+    justify-content: center;
+    margin-top: 3em;
+}
+
+/* Selector Specificity: (0, 1, 2) */
+section[data-element="formulario"] input {
+    font-size: 1em;
+}
+
+/* Selector Specificity: (0, 0, 2) */
+form h2 {
+    text-align-last: center;
+    font-size: 1.5em;
+}
+
+/* Selector Specificity: (0, 0, 1) */
+p {
+    font-size: 1.5em;
+}
+
+/* Mejores tiempos */
+/* Selector Specificity: (0, 1, 1) */
+section[data-element = "mejoresTiempos"] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: solid #000;
+    width: 50%;
+    margin: auto;
+}
+
+
+/* botonera */
+
+/* Selector Specificity: (0, 1, 1) */
+section[data-type=botonera] {
+    visibility: hidden;
+}
+
+/* Mostrar la botonera solo en dispositivos móviles y tabletas */
+/* Redefinimos la botonera (se hace visible)*/
+@media screen and (max-width: 798px) {
+
+    /* Selector Specificity: (0, 1, 1) */
+    section[data-type=botonera] {
+        display: flex;
+        gap: 1em;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        visibility: visible;
+    }
+
+    /* Selector Specificity: (0, 1, 2) */
+    section[data-type=botonera] h2 {
+        width: 100%;
+        text-align-last: center;
+        font-size: 1em;
+    }
+
+    /* Selector Specificity: (0, 1, 2) */
+    section[data-type=botonera] button {
+        width: 5vw;
+        height: 5vw;
+        font-size: 2vw;
+        text-align: center;
+        background-color: #000;
+        color: #FFF;
+    }
+}
+
+
+

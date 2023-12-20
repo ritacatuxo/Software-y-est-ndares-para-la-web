@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+	<description>Coordenadas de la ruta Miradouro de São Lourenço - Cais do Sardinha - Pico do Furado</description>
+<Placemark>
+<name>Miradouro de São Lourenço</name>
+<Point>
+<coordinates>
+-16.70083865926059,32.74470511478551,75
+</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Furna Cave</name>
+<Point>
+<coordinates>
+-16.694022834613786,32.75065366070511,86
+</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Sardine Beach</name>
+<Point>
+<coordinates>
+-16.685659297423165,32.7428828458264,22
+</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Miradouro Ponta do Furado</name>
+<Point>
+<coordinates>
+-16.68033970044531,32.73914145460456,92
+</coordinates>
+</Point>
+</Placemark>
+</Document>
+</kml>

@@ -1,0 +1,66 @@
+<!DOCTYPE HTML><html lang="es"><head>
+    <!-- Datos que describen el documento -->
+    <meta charset="UTF-8">
+    <title>Meteorologia</title>
+	<meta name="author" content="Rita Fernandez-Catuxo Ortiz">
+	<meta name="description" content="Página que enseña el tiempo de los próximos 5 dias en Portugal">
+	<meta name="keywords" content="meterologia, tiempo">
+	<!-- Definir la ventana gráfica -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
+	<link rel="stylesheet" type="text/css" href="estilo/layout.css">
+	<link rel="stylesheet" type="text/css" href="estilo/pais.css">
+	<link rel="icon" href="multimedia/imagenes/favicon.ico">
+
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<script src="js/pais.js"></script>
+</head>
+
+
+
+<body>
+	
+
+	<header>
+		<h1>Escritorio Virtual</h1>
+
+		<nav>
+			<a accesskey="I" tabindex="1" href="index.html">Inicio</a>
+			<a accesskey="S" tabindex="2" href="sobremi.html">Sobre mí</a>
+			<a accesskey="N" tabindex="3" href="noticias.html">Noticias</a>
+			<a accesskey="A" tabindex="4" href="agenda.html">Agenda</a>
+			<a accesskey="M" tabindex="5" href="meteorologia.html">Meteorología</a>
+			<a accesskey="V" tabindex="6" href="viajes.php">Viajes</a>
+			<a accesskey="J" tabindex="7" href="juegos.html">Juegos</a>
+		</nav>
+	</header>
+
+	<main>
+		
+
+	</main>
+
+	<script>
+		var pais = new Pais("Portugal", "Lisboa", 10330000);
+		pais.completarInformacion("república", 38.742892662909696, -9.154941015490367, "católica");
+
+		//información principal
+		document.write("<section data-element='informacion'>");
+		document.write("<h2>Información del País:</h2>");
+		document.write("<p><strong>Nombre: </strong>" + pais.getNombre() + "</p>");
+		document.write("<p><strong>Capital: </strong>" + pais.getCapital()+ "</p>");
+
+		document.write("<p><strong>Datos secundarios:</strong></p>");
+		pais.printInformacionSecundaria();
+		document.write("<p><strong>Coordenadas:</strong></p>");
+		pais.escribirCoordenadas();
+		document.write("</section>");
+
+		pais.verJSON();
+	</script><section data-element="informacion"><h2>Información del País:</h2><p><strong>Nombre: </strong>Portugal</p><p><strong>Capital: </strong>Lisboa</p><p><strong>Datos secundarios:</strong></p><p>Poblacion: 10330000</p><p>Forma de gobierno: república</p><p>Religión mayoritaria: católica</p><p><strong>Coordenadas:</strong></p> Latitud = 38.742892662909696, Longitud = -9.154941015490367</section><section data-element="elementos"><h2>Tiempo meteorológico - Portugal</h2><article><img data-element="img_derecha" src="https://openweathermap.org/img/w/01n.png" alt="Icono del tiempo"><p data-element="descripcionTiempo">cielo claro</p><h3>20/12/2023</h3><p><strong>Temperatura máxima</strong>: 6.81 grados Celsius</p><p><strong>Temperatura mínima</strong>: 4.3 grados Celsius</p><p><strong>Humedad</strong>: 56 %</p><p><strong>Velocidad del viento</strong>: 1.05 metros/segundo</p><p><strong>Cantidad de lluvia</strong>: 0</p></article><article><img data-element="img_derecha" src="https://openweathermap.org/img/w/10n.png" alt="Icono del tiempo"><p data-element="descripcionTiempo">lluvia ligera</p><h3>21/12/2023</h3><p><strong>Temperatura máxima</strong>: 4.97 grados Celsius</p><p><strong>Temperatura mínima</strong>: 4.97 grados Celsius</p><p><strong>Humedad</strong>: 70 %</p><p><strong>Velocidad del viento</strong>: 1.89 metros/segundo</p><p><strong>Cantidad de lluvia</strong>: 0.19</p></article><article><img data-element="img_derecha" src="https://openweathermap.org/img/w/04n.png" alt="Icono del tiempo"><p data-element="descripcionTiempo">nubes</p><h3>22/12/2023</h3><p><strong>Temperatura máxima</strong>: 3.62 grados Celsius</p><p><strong>Temperatura mínima</strong>: 3.62 grados Celsius</p><p><strong>Humedad</strong>: 93 %</p><p><strong>Velocidad del viento</strong>: 2.31 metros/segundo</p><p><strong>Cantidad de lluvia</strong>: 0</p></article><article><img data-element="img_derecha" src="https://openweathermap.org/img/w/04n.png" alt="Icono del tiempo"><p data-element="descripcionTiempo">nubes</p><h3>23/12/2023</h3><p><strong>Temperatura máxima</strong>: 1.92 grados Celsius</p><p><strong>Temperatura mínima</strong>: 1.92 grados Celsius</p><p><strong>Humedad</strong>: 66 %</p><p><strong>Velocidad del viento</strong>: 6.51 metros/segundo</p><p><strong>Cantidad de lluvia</strong>: 0</p></article><article><img data-element="img_derecha" src="https://openweathermap.org/img/w/13n.png" alt="Icono del tiempo"><p data-element="descripcionTiempo">nevada ligera</p><h3>24/12/2023</h3><p><strong>Temperatura máxima</strong>: 4.73 grados Celsius</p><p><strong>Temperatura mínima</strong>: 4.73 grados Celsius</p><p><strong>Humedad</strong>: 69 %</p><p><strong>Velocidad del viento</strong>: 4.01 metros/segundo</p><p><strong>Cantidad de lluvia</strong>: 0</p></article></section>
+
+
+
+
+
+</body></html>

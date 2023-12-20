@@ -1,0 +1,72 @@
+/* Selector Specificity: (0, 1, 1) */
+section[data-element = "elementos"] {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-top: 5em;
+    width: 100%;
+}
+
+/* Selector Specificity: (0, 1, 2) */
+section[data-element = "elementos"] h2 {
+    align-self: center;
+}
+
+/* Selector Specificity: (0, 0, 1) */
+article {
+    margin: 1em;
+    border: 0.3em solid;
+}
+
+/* Selector Specificity: (0, 0, 2) */
+article p {
+    margin-left: 5em;
+}
+
+/* Selector Specificity: (0, 0, 1) */
+h3 {
+    text-align: center;
+}
+
+/* Selector Specificity: (0, 1, 1) */
+p[data-element = "autor"] {
+    text-align: right;
+    margin-right: 1em;
+}
+
+/* Selector Specificity: (0, 1, 1) */
+section[data-element=inputsNoticia] {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-top: 5em; 
+    margin-left: 5em;
+    margin-bottom: 5em;
+}
+
+/* Selector Specificity: (0, 0, 1) */
+input {
+    margin-bottom: 1em;
+}
+
+/* Selector Specificity: (0, 0, 1) */
+textarea {
+    margin-bottom: 2em;
+}
+
+
+
+/* Selector Specificity: (0, 1, 1) */
+section[data-element="seleccionarArchivo"] {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 5vw;
+}
+
+/* Selector Specificity: (0, 0, 1) */
+label {
+    margin-bottom: 0.5em;
+}
+
+

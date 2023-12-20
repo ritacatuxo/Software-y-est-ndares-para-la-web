@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+
+<html lang="es">
+<head>
+    <!-- Datos que describen el documento -->
+    <meta charset="UTF-8" />
+    <title>Futbol</title>
+	<meta name ="author" content ="Rita Fernandez-Catuxo Ortiz" />
+	<meta name ="description" content ="Aplicación para ver a los jugadores de fútbol posicionados en el campo" />
+    <meta name ="keywords" content ="futbol, jugadores, banquillo" />
+	<!-- Definir la ventana gráfica -->
+	<meta name ="viewport" content ="width=device-width, initial-scale=1.0" />
+    
+    <link rel="stylesheet" href="estilo/estilo.css">
+    <link rel="stylesheet" href="estilo/layout.css">
+	<link rel="stylesheet" href="estilo/juegos.css">
+	<link rel="stylesheet" href="estilo/api.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<script src="js/api.js"></script>
+</head>
+
+
+
+<body>
+
+	<header>
+        <!-- menú -->
+        <h1>Escritorio Virtual</h1>
+
+            <nav>
+                <a accesskey="I" tabindex=1 href="index.html">Inicio</a>
+                <a accesskey="S" tabindex=2 href="sobremi.html">Sobre mí</a>
+                <a accesskey="N" tabindex=3 href="noticias.html">Noticias</a>
+                <a accesskey="A" tabindex=4 href="agenda.html">Agenda</a>
+                <a accesskey="M" tabindex=5 href="meteorologia.html">Meteorología</a>
+                <a accesskey="V" tabindex=6 href="viajes.php">Viajes</a>
+                <a accesskey="J" tabindex=7 href="juegos.html">Juegos</a>                
+            </nav>
+
+    </header>
+
+    
+    <!-- todos los juegos -->
+    <section data-element="juegos">
+        <h2> Juegos disponibles: </h2>
+        <a accesskey="M" tabindex=1 href="memoria.html">Memoria</a>
+        <a accesskey="S" tabindex=2 href="sudoku.html">Sudoku</a>
+        <a accesskey="C" tabindex=3 href="crucigrama.php">Crucigrama</a>
+        <a accesskey="R" tabindex=4 href="api.html">Futbol</a>
+        <a accesskey="L" tabindex=5 href="libreria.php">Libreria</a>
+    </section>
+
+
+    <main>
+
+        <!-- explicación del juego -->
+        <section data-element="reglas">
+            <h2>Reglas:</h2>
+            <p><strong>El usuario tiene dos opciones a elegir:</strong></p>
+            <ul>
+                <li>Añadir manualmente a los jugadores</li>
+                <li>Añadir a los jugadores por medio de un .txt (puede usar como ejemplo el archivo adjunto "jugadores.txt)"</li>
+            </ul>
+
+            <p>Una vez haya jugadores en la sección <strong>Jugadores</strong>, estos se podrán arrastar hacia el la sección <strong>Banquillo</strong>. Finalmente, se podrá ver la colocación de los jugadores que no están en el banquillo en el campo (en pantalla completa).</p>
+            
+
+        </section>
+
+        <!-- añadir jugadores -->
+        <section data-element="añadirJugadores">
+            <h2>Añadir jugador:</h2>
+                <label for="nombre">Nombre:</label>
+                <input id="nombre" type="text"  data-element="nombre" placeholder="Nombre del jugador" required>
+                <label for="apellidos">Apellidos:</label>
+                <input id="apellidos" type="text"  data-element="apellidos" placeholder="Apellidos del jugador" required>
+                <label for="posicion">Posición en el campo:</label>
+                <select id = "posicion" data-element="selector">
+                    <!-- <option>Seleccione Localización</option> -->
+                    <option>Portero</option>
+                    <option>Delantero izquierda</option>
+                    <option>Delantero central</option>
+                    <option>Delantero derecha</option>
+                    <option>Central izquierdo</option>
+                    <option>Central derecho</option>
+                    <option>Defensa central</option>
+                    <option>Defensa izquierdo</option>
+                    <option>Defensa derecho</option>
+
+                </select>
+            <input type = "button" value = "Añadir" onclick="equipo.agregarJugador()"/>
+        </section>
+
+        <!-- sección para la selección de archivo -->
+        <section data-element="seleccionarCSV">
+            <h2>Seleccione un archivo CSV para cargar a los jugadores: </h2>
+            <input type="file" data-element="archivoCSV" onchange="equipo.readInputFile(this.files);">
+        </section>
+
+
+        <!-- Espacio para mostrar los jugadores -->
+        <section data-element="listaJugadores">
+            <h2>Jugadores</h2>
+        </section>
+
+        <!-- Espacio para mostrar los jugadores -->
+        <section data-element="banquillo" ondrop="equipo.soltarJugadorEnBanquillo(event)" ondragover="equipo.permitirSoltar(event)">
+            <h2>Jugadores en el banquillo:</h2>
+        </section>
+
+        
+        <input type = "button" value = "Crear Formacion" onclick="equipo.mostrarFormación()"/>
+    
+    </main>
+	
+
+</body>
+</html>

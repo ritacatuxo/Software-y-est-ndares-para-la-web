@@ -1,0 +1,65 @@
+
+/* Reglas para aplicar esquemas de posicionamiento especifico al encabezado del
+proyecto <header>,  que contiene el elemento <h1> y <nav>*/
+
+
+
+/* especificidad 001 */
+header {
+    display: flex; /* Utilizar flexbox*/
+    align-items: center; /* Centrar verticalmente los elementos */
+    justify-content: space-between; /* alinear los elementos del menú a la derecha*/
+}
+
+/* Estilos para la lista de navegación */
+
+/*especificidad 002*/
+header h1 {
+    margin: 0; /* Quitar el margen por defecto del h1 */
+}
+
+/*especificidad 002*/
+nav ul {
+    display: flex;
+}
+
+/* especificidad 002 */
+nav a {
+    margin-right: 0.625em; /* Añadir un margen derecho a cada elemento de la lista */
+    margin-left: 1.25em; /* Añadir un margen izquierdo a cada elemento de la lista */
+    text-decoration: none; /* Quitar subrayado de los enlaces */
+}
+
+
+/* Media queries para ajustar el header y la ultimedia en moviles */
+@media screen and (max-width: 465px) {
+    /* Reglas específicas para el tamaño de pantalla de un movil */
+    /* Selector Specificity: (0, 0, 1) */
+    header {
+        flex-direction: column; /* Cambiar la dirección a columna para móviles */
+        gap: .5em;
+    }
+    
+}
+
+/* Media queries para ajustar el header en tablets */
+@media screen and (max-width: 799px) {
+    /* Reglas específicas para el tamaño de pantalla de una tablet */
+    /* Selector Specificity: (0, 0, 1) */
+    header {
+        padding: 0.9375em;
+    }
+}
+
+/* Media queries para ajustar el header en monitor */
+@media screen and (max-width: 800px) {
+    /* Reglas específicas para el tamaño de pantalla de un monitor */
+    /* Selector Specificity: (0, 0, 1) */
+    header {
+        padding: 1.25em;
+    }
+
+
+}
+
+

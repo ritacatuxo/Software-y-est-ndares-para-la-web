@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" version="2.0">
+<polyline points="
+60,150
+60,124
+230.0,107
+385.0,53
+715.0,45
+715.0,150
+60,150
+"
+style="fill:white;stroke:red;stroke-width:4" />
+<text x="110" y="155" style="writing-mode: tb; glyph-orientation-vertical: 0;">
+Hotel Colon Tui
+</text>
+<text x="280.0" y="155" style="writing-mode: tb; glyph-orientation-vertical: 0;">
+San Bartolome de Rebordans
+</text>
+<text x="435.0" y="155" style="writing-mode: tb; glyph-orientation-vertical: 0;">
+Virxe do Camino
+</text>
+<text x="765.0" y="155" style="writing-mode: tb; glyph-orientation-vertical: 0;">
+Orbenlle(Bares)
+</text>
+</svg>
