@@ -1,15 +1,12 @@
-<!DOCTYPE HTML>
-
-<html lang="es">
-<head>
+<html lang="es"><head>
     <!-- Datos que describen el documento -->
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <title>Futbol</title>
-	<meta name ="author" content ="Rita Fernandez-Catuxo Ortiz" />
-	<meta name ="description" content ="Aplicación para ver a los jugadores de fútbol posicionados en el campo" />
-    <meta name ="keywords" content ="futbol, jugadores, banquillo" />
+	<meta name="author" content="Rita Fernandez-Catuxo Ortiz">
+	<meta name="description" content="Aplicación para ver a los jugadores de fútbol posicionados en el campo">
+    <meta name="keywords" content="futbol, jugadores, banquillo">
 	<!-- Definir la ventana gráfica -->
-	<meta name ="viewport" content ="width=device-width, initial-scale=1.0" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" href="estilo/estilo.css">
     <link rel="stylesheet" href="estilo/layout.css">
@@ -29,13 +26,13 @@
         <h1>Escritorio Virtual</h1>
 
             <nav>
-                <a accesskey="I" tabindex=1 href="index.html">Inicio</a>
-                <a accesskey="S" tabindex=2 href="sobremi.html">Sobre mí</a>
-                <a accesskey="N" tabindex=3 href="noticias.html">Noticias</a>
-                <a accesskey="A" tabindex=4 href="agenda.html">Agenda</a>
-                <a accesskey="M" tabindex=5 href="meteorologia.html">Meteorología</a>
-                <a accesskey="V" tabindex=6 href="viajes.php">Viajes</a>
-                <a accesskey="J" tabindex=7 href="juegos.html">Juegos</a>                
+                <a accesskey="I" tabindex="1" href="index.html">Inicio</a>
+                <a accesskey="S" tabindex="2" href="sobremi.html">Sobre mí</a>
+                <a accesskey="N" tabindex="3" href="noticias.html">Noticias</a>
+                <a accesskey="A" tabindex="4" href="agenda.html">Agenda</a>
+                <a accesskey="M" tabindex="5" href="meteorologia.html">Meteorología</a>
+                <a accesskey="V" tabindex="6" href="viajes.php">Viajes</a>
+                <a accesskey="J" tabindex="7" href="juegos.html">Juegos</a>                
             </nav>
 
     </header>
@@ -44,11 +41,11 @@
     <!-- todos los juegos -->
     <section data-element="juegos">
         <h2> Juegos disponibles: </h2>
-        <a accesskey="M" tabindex=1 href="memoria.html">Memoria</a>
-        <a accesskey="S" tabindex=2 href="sudoku.html">Sudoku</a>
-        <a accesskey="C" tabindex=3 href="crucigrama.php">Crucigrama</a>
-        <a accesskey="R" tabindex=4 href="api.html">Futbol</a>
-        <a accesskey="L" tabindex=5 href="libreria.php">Libreria</a>
+        <a accesskey="M" tabindex="1" href="memoria.html">Memoria</a>
+        <a accesskey="S" tabindex="2" href="sudoku.html">Sudoku</a>
+        <a accesskey="C" tabindex="3" href="crucigrama.php">Crucigrama</a>
+        <a accesskey="R" tabindex="4" href="api.html">Futbol</a>
+        <a accesskey="L" tabindex="5" href="libreria.php">Libreria</a>
     </section>
 
 
@@ -72,11 +69,11 @@
         <section data-element="añadirJugadores">
             <h2>Añadir jugador:</h2>
                 <label for="nombre">Nombre:</label>
-                <input id="nombre" type="text"  data-element="nombre" placeholder="Nombre del jugador" required>
+                <input id="nombre" type="text" data-element="nombre" placeholder="Nombre del jugador" required="" disabled="">
                 <label for="apellidos">Apellidos:</label>
-                <input id="apellidos" type="text"  data-element="apellidos" placeholder="Apellidos del jugador" required>
+                <input id="apellidos" type="text" data-element="apellidos" placeholder="Apellidos del jugador" required="" disabled="">
                 <label for="posicion">Posición en el campo:</label>
-                <select id = "posicion" data-element="selector">
+                <select id="posicion" data-element="selector" disabled="">
                     <!-- <option>Seleccione Localización</option> -->
                     <option>Portero</option>
                     <option>Delantero izquierda</option>
@@ -89,31 +86,47 @@
                     <option>Defensa derecho</option>
 
                 </select>
-            <input type = "button" value = "Añadir" onclick="equipo.agregarJugador()"/>
+            <input type="button" value="Añadir" onclick="equipo.agregarJugador()" disabled="">
         </section>
 
         <!-- sección para la selección de archivo -->
         <section data-element="seleccionarCSV">
             <h2>Seleccione un archivo CSV para cargar a los jugadores: </h2>
-            <input type="file" data-element="archivoCSV" onchange="equipo.readInputFile(this.files);">
+            <input type="file" data-element="archivoCSV" onchange="equipo.readInputFile(this.files);" disabled="">
         </section>
 
 
         <!-- Espacio para mostrar los jugadores -->
         <section data-element="listaJugadores">
             <h2>Jugadores</h2>
-        </section>
+        <article draggable="true" ondragstart="equipo.iniciarArrastre(event)"><h3>Lionel</h3><p>Apellidos:Messi</p><p>Posición:Portero
+</p></article><article draggable="true" ondragstart="equipo.iniciarArrastre(event)"><h3>Gerard</h3><p>Apellidos:Piqué</p><p>Posición:Delantero izquierda
+</p></article><article draggable="true" ondragstart="equipo.iniciarArrastre(event)"><h3>Ansu</h3><p>Apellidos:Fati</p><p>Posición:Delantero central
+</p></article><article draggable="true" ondragstart="equipo.iniciarArrastre(event)"><h3>Alexia</h3><p>Apellidos:Putellas</p><p>Posición:Delantero derecha
+</p></article><article draggable="true" ondragstart="equipo.iniciarArrastre(event)"><h3>Lieke</h3><p>Apellidos:Martens</p><p>Posición:Central izquierdo
+</p></article><article draggable="true" ondragstart="equipo.iniciarArrastre(event)"><h3>Sergio</h3><p>Apellidos:Busquets</p><p>Posición:Central derecho
+</p></article><article draggable="true" ondragstart="equipo.iniciarArrastre(event)"><h3>Miralem</h3><p>Apellidos:Pjanic</p><p>Posición:Defensa central
+</p></article><article draggable="true" ondragstart="equipo.iniciarArrastre(event)"><h3>Martin</h3><p>Apellidos:Braithwaite</p><p>Posición:Defensa izquierdo
+</p></article></section>
 
         <!-- Espacio para mostrar los jugadores -->
         <section data-element="banquillo" ondrop="equipo.soltarJugadorEnBanquillo(event)" ondragover="equipo.permitirSoltar(event)">
             <h2>Jugadores en el banquillo:</h2>
-        </section>
+        <article><h3>Cristiano</h3><p>Apellidos:Ronaldo</p><p>Posición:Banquillo</p></article></section>
 
         
-        <input type = "button" value = "Crear Formacion" onclick="equipo.mostrarFormación()"/>
+        <input type="button" value="Crear Formacion" onclick="equipo.mostrarFormación()">
     
     </main>
 	
 
-</body>
-</html>
+
+<section data-element="formacion"><h2>Formacion en el campo</h2><article data-element="portero"><h3>Lionel</h3><h3>Messi</h3><p>Portero
+</p></article><article data-element="delanteroIzq"><h3>Gerard</h3><h3>Piqué</h3><p>Delantero izquierda
+</p></article><article data-element="delanteroCentral"><h3>Ansu</h3><h3>Fati</h3><p>Delantero central
+</p></article><article data-element="delanteroDerecha"><h3>Alexia</h3><h3>Putellas</h3><p>Delantero derecha
+</p></article><article data-element="centralIzq"><h3>Lieke</h3><h3>Martens</h3><p>Central izquierdo
+</p></article><article data-element="centralDerecha"><h3>Sergio</h3><h3>Busquets</h3><p>Central derecho
+</p></article><article data-element="defensaCentral"><h3>Miralem</h3><h3>Pjanic</h3><p>Defensa central
+</p></article><article data-element="defensaIzq"><h3>Martin</h3><h3>Braithwaite</h3><p>Defensa izquierdo
+</p></article></section><section data-element="fullScreen"><h3>Formación en pantalla completa</h3><button data-element="fullScreen">Mostrar en pantalla completa</button></section></body></html>
